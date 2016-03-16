@@ -35,5 +35,6 @@ namespace TimeClock.Data.Migrations
             //    );
             //
         }
+
     }
 }
