@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebApplication1.Models.EmployeeViewModel>
+﻿@using TimeClock.Data.Models
+@model IEnumerable<WebApplication1.Models.EmployeeViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -12,29 +13,32 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.FullName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.CurrentStatus)
         </th>
-        <th></th>
+        <th>
+            Actions
+        </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
+            @Html.DisplayFor(modelItem => item.FullName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LastName)
+            <div class="punch-status  @item.CurrentStatusClass"></div>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LastPunchTime)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EmployeeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeId })
+            @if (item.CurrentStatus == TimePunchStatus.PunchedIn)
+            {
+                @Html.ActionLink("Clock Out", "Clock", new { id = item.EmployeeId, status = TimePunchStatus.PunchedOut})
+            }
+            @Html.ActionLink("Edit", "Edit", new {id = item.EmployeeId}) |
+            @Html.ActionLink("Details", "Details", new {id = item.EmployeeId}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.EmployeeId})
         </td>
     </tr>
 }

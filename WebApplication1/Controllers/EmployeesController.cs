@@ -8,6 +8,8 @@ using WebApplication1.Services;
 
 namespace TimeClock.Web.Controllers
 {
+ 
+    //TODO: Add role based security here, to make sure only admins can edit employees;
     public class EmployeesController : Controller
     {
         private readonly IEmployeeService _employeeService;
@@ -25,7 +27,8 @@ namespace TimeClock.Web.Controllers
                 FirstName = e.FirstName,
                 LastName = e.LastName,
                 EmployeeId = e.EmployeeId,
-                LastPunchTime = e.LastPunchTime
+                LastPunchTime = e.LastPunchTime,
+                CurrentStatus = e.CurrentStatus
             }));
         }
 
@@ -102,6 +105,15 @@ namespace TimeClock.Web.Controllers
             return View(employee);
         }
 
+        public ActionResult Clock(int? id, TimePunchStatus status)
+        {
+            if (id != null)
+            {
+                Employee employee = _employeeService.FindById(id);
+                _employeeService.ChangeClockStatus(employee, status);
+            }
+            return RedirectToAction("Index");
+        }
         //// GET: Employees/Delete/5
         //public ActionResult Delete(int? id)
         //{
