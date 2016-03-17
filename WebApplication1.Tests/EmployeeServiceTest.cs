@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -127,6 +128,18 @@ namespace WebApplication1.Tests
                 _context.Verify(m => m.SaveChanges(), Times.Once);
                 
                 Assert.IsTrue(employee.CurrentStatus == TimePunchStatus.PunchedOut);
+            }
+
+            public void Saves_New_Punch_Time()
+            {
+                Employee employee = ServicesTestHelper.CreateEmployee();
+                IEmployeeService service = ServicesTestHelper.CreateService(context: _context);
+                ITimeService timeService = new TimeService();
+
+                service.ChangeClockStatus(employee, TimePunchStatus.PunchedOut);
+                
+
+               
             }
         }
 

@@ -63,5 +63,10 @@ namespace WebApplication1.Services
             _context.Entry(employee).State = EntityState.Modified;
             _context.SaveChanges();
         }
+
+        private void AddPunchTime(Employee employee, TimePunch time)
+        {
+            
+        }
     }
 }
