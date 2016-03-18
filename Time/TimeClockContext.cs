@@ -15,6 +15,8 @@ namespace TimeClock.Data
     }
     public class TimeClockContext : DbContext, ITimeClockContext
     {
-        public virtual DbSet<Employee> Employees { get; set; } 
+        public virtual DbSet<Employee> Employees { get; set; }
+
+        public virtual DbSet<TimePunch> TimePunches { get; set; }
     }
 }
