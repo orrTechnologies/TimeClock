@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using Microsoft.Owin.Security.Provider;
 using TimeClock.Data;
 using TimeClock.Data.Models;
 
-namespace WebApplication1.Services
+namespace TimeClock.Web.Services
 {
     public interface IEmployeeService
     {
@@ -23,9 +20,12 @@ namespace WebApplication1.Services
     public class EmployeeService : IEmployeeService
     {
         private readonly TimeClockContext _context;
-        public EmployeeService(TimeClockContext context)
+        private readonly ITimeService _timeService;
+
+        public EmployeeService(TimeClockContext context, ITimeService timeService)
         {
             _context = context;
+            _timeService = timeService;
         }
 
         public void CreateEmployee(Employee employee)
@@ -40,9 +40,11 @@ namespace WebApplication1.Services
             //Can not change status to current status. 
             if (employee.CurrentStatus == status) return false;
 
+            //Clock the employee out, and save. 
             employee.CurrentStatus = status;
             UpdateEmployee(employee);
 
+            _timeService.AddTimePunch(employee, new TimePunch(status, DateTime.Now));
             return true;
         }
 
