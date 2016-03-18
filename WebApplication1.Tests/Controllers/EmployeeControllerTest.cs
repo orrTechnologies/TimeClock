@@ -6,8 +6,8 @@ using Moq;
 using TimeClock.Data;
 using TimeClock.Data.Models;
 using TimeClock.Web.Controllers;
+using TimeClock.Web.Services;
 using WebApplication1.Controllers;
-using WebApplication1.Services;
 
 namespace WebApplication1.Tests.Controllers
 {

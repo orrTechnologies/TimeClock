@@ -96,14 +96,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\EmployeeControllerTest.cs" />
-    <Compile Include="ITimeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="EmployeeServiceTest.cs" />
     <Compile Include="TestUtils\TestTimeClockContext.cs" />
     <Compile Include="TestUtils\TestDbAsyncEnumerator.cs" />
     <Compile Include="TestUtils\TestDbSet.cs" />
-    <Compile Include="TimeService.cs" />
+    <Compile Include="TimeServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

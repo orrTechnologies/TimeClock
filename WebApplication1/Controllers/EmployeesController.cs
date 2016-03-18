@@ -3,8 +3,8 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using TimeClock.Data.Models;
+using TimeClock.Web.Services;
 using WebApplication1.Models;
-using WebApplication1.Services;
 
 namespace TimeClock.Web.Controllers
 {

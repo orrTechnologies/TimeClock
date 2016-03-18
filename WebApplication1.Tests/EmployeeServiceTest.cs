@@ -8,11 +8,11 @@ using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WebApplication1.Controllers;
 using WebApplication1.Models;
-using WebApplication1.Services;
 using System.Threading.Tasks;
 using Moq;
 using TimeClock.Data;
 using TimeClock.Data.Models;
+using TimeClock.Web.Services;
 
 namespace WebApplication1.Tests
 {
@@ -27,10 +27,11 @@ namespace WebApplication1.Tests
         internal static class ServicesTestHelper
         {
             internal static IEmployeeService CreateService(
-                Mock<TimeClockContext> context = null, Mock<DbSet<Employee>> employeData = null)
+                Mock<TimeClockContext> context = null, Mock<DbSet<Employee>> employeData = null, Mock<ITimeService> timeService = null)
             {
                 Mock<DbSet<Employee>> mockSet = employeData ?? new Mock<DbSet<Employee>>();
                 Mock<TimeClockContext> mockContext = context ?? new Mock<TimeClockContext>();
+                Mock<ITimeService> mockTimeService = timeService ?? new Mock<ITimeService>();
 
                 var data = new List<Employee>()
                 {
@@ -49,7 +50,7 @@ namespace WebApplication1.Tests
                 mockSet.Setup(m => m.Find(It.IsAny<object[]>()))
                 .Returns<object[]>(ids => mockContext.Object.Employees.FirstOrDefault(e => e.EmployeeId == (int)ids[0]));
 
-                return new EmployeeService(mockContext.Object);
+                return new EmployeeService(mockContext.Object, mockTimeService.Object);
             }
             internal static Employee CreateEmployee(TimePunchStatus status = TimePunchStatus.PunchedIn)
             {
@@ -129,17 +130,16 @@ namespace WebApplication1.Tests
                 
                 Assert.IsTrue(employee.CurrentStatus == TimePunchStatus.PunchedOut);
             }
-
-            public void Saves_New_Punch_Time()
+             [TestMethod]
+            public void Call_TimeServer_Add_Time_Punch()
             {
                 Employee employee = ServicesTestHelper.CreateEmployee();
-                IEmployeeService service = ServicesTestHelper.CreateService(context: _context);
-                ITimeService timeService = new TimeService();
+                Mock<ITimeService> timeService = new Mock<ITimeService>();
+                IEmployeeService service = ServicesTestHelper.CreateService(context: _context, timeService: timeService);
 
                 service.ChangeClockStatus(employee, TimePunchStatus.PunchedOut);
-                
+                timeService.Verify(m => m.AddTimePunch(It.IsAny<Employee>(), (It.IsAny<TimePunch>())), Times.Once);
 
-               
             }
         }
 
@@ -197,7 +197,7 @@ namespace WebApplication1.Tests
             [TestMethod]
             public void Return_List_Of_Employees_In_Context()
             {
-                var service = new EmployeeService(_context.Object);
+                var service = ServicesTestHelper.CreateService(_context);
                 List<Employee> employees = service.GetEmployeeList();
 
                 Assert.IsTrue(employees.Count == 2);
