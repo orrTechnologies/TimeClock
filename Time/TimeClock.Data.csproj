@@ -56,9 +56,6 @@
     <Compile Include="Models\TimePunchStatus.cs" />
     <Compile Include="Models\TimeSpan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestUtils\TestDbAsyncEnumerator.cs" />
-    <Compile Include="TestUtils\TestDbSet.cs" />
-    <Compile Include="TestUtils\TestTimeClockContext.cs" />
     <Compile Include="TimeClockContext.cs" />
   </ItemGroup>
   <ItemGroup>
