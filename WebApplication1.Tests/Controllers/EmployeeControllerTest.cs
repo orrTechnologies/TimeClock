@@ -22,7 +22,7 @@ namespace WebApplication1.Tests.Controllers
         public void Initialize()
         {
             _service = new Mock<IEmployeeService>();
-            _controller = new EmployeesController(_service.Object);
+          //  _controller = new EmployeesController(_service.Object);
         }
         public class TheIndexAction
         {
@@ -49,7 +49,7 @@ namespace WebApplication1.Tests.Controllers
             public void Initialize()
             {
                 _service = new Mock<IEmployeeService>();
-                _controller = new EmployeesController(_service.Object);
+                //_controller = new EmployeesController(_service.Object);
 
 
             }

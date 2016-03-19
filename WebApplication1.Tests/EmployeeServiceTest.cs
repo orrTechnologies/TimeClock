@@ -27,17 +27,17 @@ namespace WebApplication1.Tests
         internal static class ServicesTestHelper
         {
             internal static IEmployeeService CreateService(
-                Mock<TimeClockContext> context = null, Mock<DbSet<Employee>> employeData = null, Mock<ITimeService> timeService = null)
+                Mock<TimeClockContext> context = null, Mock<DbSet<Employee>> employeData = null)
             {
                 Mock<DbSet<Employee>> mockSet = employeData ?? new Mock<DbSet<Employee>>();
                 Mock<TimeClockContext> mockContext = context ?? new Mock<TimeClockContext>();
-                Mock<ITimeService> mockTimeService = timeService ?? new Mock<ITimeService>();
 
                 var data = new List<Employee>()
                 {
                     new Employee() {EmployeeId = 1, FirstName = "dylan", LastName = "orr"},
                     new Employee() {EmployeeId = 2, FirstName = "Tyler", LastName = "Mork"}
                 }.AsQueryable();
+
 
                 mockSet.As<IQueryable<Employee>>().Setup(m => m.Provider).Returns(data.Provider);
                 mockSet.As<IQueryable<Employee>>().Setup(m => m.Expression).Returns(data.Expression);
@@ -50,7 +50,7 @@ namespace WebApplication1.Tests
                 mockSet.Setup(m => m.Find(It.IsAny<object[]>()))
                 .Returns<object[]>(ids => mockContext.Object.Employees.FirstOrDefault(e => e.EmployeeId == (int)ids[0]));
 
-                return new EmployeeService(mockContext.Object, mockTimeService.Object);
+                return new EmployeeService(mockContext.Object);
             }
             internal static Employee CreateEmployee(TimePunchStatus status = TimePunchStatus.PunchedIn)
             {
@@ -67,13 +67,11 @@ namespace WebApplication1.Tests
         [TestClass]
         public class TheClockMethod
         {
-            private Mock<DbSet<Employee>> _employees;
             private Mock<TimeClockContext> _context;
 
             [TestInitialize]
             public void Initialize()
             {
-                _employees = new Mock<DbSet<Employee>>();
                 _context = new Mock<TimeClockContext>();
 
             }
@@ -83,7 +81,7 @@ namespace WebApplication1.Tests
             {
                 Employee employee = ServicesTestHelper.CreateEmployee(TimePunchStatus.PunchedOut);
 
-                IEmployeeService service = ServicesTestHelper.CreateService();
+                IEmployeeService service = ServicesTestHelper.CreateService(context: _context);
                 bool success = service.ChangeClockStatus(employee, TimePunchStatus.PunchedIn);
 
                 Assert.IsTrue(success);
@@ -130,17 +128,6 @@ namespace WebApplication1.Tests
                 
                 Assert.IsTrue(employee.CurrentStatus == TimePunchStatus.PunchedOut);
             }
-             [TestMethod]
-            public void Call_TimeServer_Add_Time_Punch()
-            {
-                Employee employee = ServicesTestHelper.CreateEmployee();
-                Mock<ITimeService> timeService = new Mock<ITimeService>();
-                IEmployeeService service = ServicesTestHelper.CreateService(context: _context, timeService: timeService);
-
-                service.ChangeClockStatus(employee, TimePunchStatus.PunchedOut);
-                timeService.Verify(m => m.AddTimePunch(It.IsAny<Employee>(), (It.IsAny<TimePunch>())), Times.Once);
-
-            }
         }
 
         [TestClass]
@@ -155,6 +142,7 @@ namespace WebApplication1.Tests
                 _employees = new Mock<DbSet<Employee>>();
                 _context = new Mock<TimeClockContext>();
             }
+
             [TestMethod]
             public void Add_Employee_To_Context()
             {

@@ -24,6 +24,7 @@ namespace WebApplication1.App_Start
             // Register your types, for instance:
             container.Register<TimeClockContext, TimeClockContext>(Lifestyle.Scoped);
             container.Register<IEmployeeService, EmployeeService>(Lifestyle.Scoped);
+            container.Register<ITimeService, TimeService>(Lifestyle.Scoped);
             // This is an extension method from the integration package.
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
 

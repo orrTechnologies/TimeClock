@@ -13,10 +13,12 @@ namespace TimeClock.Web.Controllers
     public class EmployeesController : Controller
     {
         private readonly IEmployeeService _employeeService;
+        private readonly ITimeService _timeService;
         //ApplicationDbContext db = new ApplicationDbContext();
-        public EmployeesController(IEmployeeService employeeService)
+        public EmployeesController(IEmployeeService employeeService, ITimeService timeService)
         {
             _employeeService = employeeService;
+            _timeService = timeService;
         }
 
         // GET: Employees
@@ -111,6 +113,8 @@ namespace TimeClock.Web.Controllers
             {
                 Employee employee = _employeeService.FindById(id);
                 _employeeService.ChangeClockStatus(employee, status);
+
+                _timeService.AddTimePunch(employee, new TimePunch((int)id, status, DateTime.Now));
             }
             return RedirectToAction("Index");
         }

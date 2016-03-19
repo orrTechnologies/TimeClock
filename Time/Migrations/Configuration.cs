@@ -16,13 +16,14 @@ namespace TimeClock.Data.Migrations
             ContextKey = "TimeClock.Data.TimeClockContext";
         }
 
-        protected override void Seed(TimeClock.Data.TimeClockContext context)
+        protected override void Seed(TimeClockContext context)
         {
 
             context.Employees.AddOrUpdate(
                 new Employee() { FirstName = "dylan", LastName = "orr", LastPunchTime = DateTime.Now},
                     new Employee() { FirstName = "Tyler", LastName = "Mork", LastPunchTime = DateTime.Now }
                     );
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
