@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -46,6 +47,9 @@ namespace TimeClock.Web.Controllers
             {
                 return HttpNotFound();
             }
+            IEnumerable<TimePunch> TimePunches = _timeService.GetPunchList(employee.EmployeeId, new TimeClockSpan( DateTime.Now.AddDays(-7),
+                DateTime.Now));
+            View().ViewBag.TimePunches = TimePunches;
             return View(employee);
         }
 
@@ -118,6 +122,7 @@ namespace TimeClock.Web.Controllers
             }
             return RedirectToAction("Index");
         }
+
         //// GET: Employees/Delete/5
         //public ActionResult Delete(int? id)
         //{

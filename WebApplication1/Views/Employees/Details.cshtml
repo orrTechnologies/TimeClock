@@ -1,4 +1,5 @@
-﻿@model TimeClock.Data.Models.Employee
+﻿@using TimeClock.Data.Models
+@model TimeClock.Data.Models.Employee
 
 @{
     ViewBag.Title = "Details";
@@ -8,7 +9,7 @@
 
 <div>
     <h4>Employee</h4>
-    <hr />
+    <hr/>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
@@ -27,6 +28,10 @@
         </dd>
 
     </dl>
+</div>
+<div class="time-punch-list">
+    @{ Html.RenderPartial("_List", (IEnumerable<TimePunch>) ViewBag.TimePunches); }
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeId }) |

@@ -8,6 +8,7 @@ namespace TimeClock.Data.Models
     {
         [Key]
         public int Id { get; set; }
+        internal TimePunch() { }
         public TimePunch(int employeeId, TimePunchStatus status, DateTime time)
         {
             EmployeeId = employeeId;

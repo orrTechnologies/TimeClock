@@ -9,7 +9,6 @@ using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
 using TimeClock.Data;
 using TimeClock.Web.Services;
-using WebApplication1.Tests;
 
 namespace WebApplication1.App_Start
 {
