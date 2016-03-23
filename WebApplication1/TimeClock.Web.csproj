@@ -298,7 +298,7 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
-    <Content Include="Views\Employees\_List.cshtml">
+    <Content Include="Views\TimePunch\_List.cshtml">
       <BrowseToURL>~/TimePunch/List</BrowseToURL>
     </Content>
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -308,7 +308,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\NewFolder1\" />
-    <Folder Include="Views\TimePunch\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
