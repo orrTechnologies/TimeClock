@@ -103,3 +103,22 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+
+/*****************************************************/
+/*                         Custom                    */
+/*****************************************************/
+.employee-status-block {
+    text-align: center;
+    color: #fff;
+    height: 40px;
+    padding:9px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.employee-status-block.status-in {
+        background: #3598dc;
+}
+.employee-status-block.status-out {
+        background: #e7505a;
+}
