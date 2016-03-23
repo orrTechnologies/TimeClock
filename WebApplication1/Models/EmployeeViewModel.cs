@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using TimeClock.Data.Models;
 
-namespace WebApplication1.Models
+namespace TimeClock.Web.Models
 {
     public class EmployeeViewModel
     {
@@ -25,15 +22,6 @@ namespace WebApplication1.Models
         public string FullName
         {
             get { return FirstName + " " + LastName; }
-        }
-
-        public string CurrentStatusClass
-        {
-            get
-            {
-                return CurrentStatus == TimePunchStatus.PunchedIn ?
-                    "punched-in" : "punched-out";
-            }
         }
     }
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Web;
+﻿using System.Reflection;
 using System.Web.Mvc;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
@@ -10,7 +6,7 @@ using SimpleInjector.Integration.Web.Mvc;
 using TimeClock.Data;
 using TimeClock.Web.Services;
 
-namespace WebApplication1.App_Start
+namespace TimeClock.Web
 {
     internal static class SimpleInject
     {

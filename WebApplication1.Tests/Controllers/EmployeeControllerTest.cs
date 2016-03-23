@@ -7,7 +7,6 @@ using TimeClock.Data;
 using TimeClock.Data.Models;
 using TimeClock.Web.Controllers;
 using TimeClock.Web.Services;
-using WebApplication1.Controllers;
 
 namespace WebApplication1.Tests.Controllers
 {

@@ -3,11 +3,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Owin;
-using WebApplication1.Models;
+using TimeClock.Web.Models;
 
-namespace WebApplication1
+namespace TimeClock.Web
 {
     public partial class Startup
     {

@@ -1,8 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using WebApplication1;
-using WebApplication1.App_Start;
 
 namespace TimeClock.Web
 {

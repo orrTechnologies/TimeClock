@@ -6,8 +6,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WebApplication1.Controllers;
-using WebApplication1.Models;
 using System.Threading.Tasks;
 using Moq;
 using TimeClock.Data;

@@ -1,8 +1,9 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using TimeClock.Web;
 
-[assembly: OwinStartupAttribute(typeof(WebApplication1.Startup))]
-namespace WebApplication1
+[assembly: OwinStartup(typeof(Startup))]
+namespace TimeClock.Web
 {
     public partial class Startup
     {
