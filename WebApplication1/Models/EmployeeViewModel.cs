@@ -16,6 +16,7 @@ namespace WebApplication1.Models
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+        [Display(Name="Time")]
         public DateTime? LastPunchTime { get; set; }
 
         [Display(Name = "Status")]
