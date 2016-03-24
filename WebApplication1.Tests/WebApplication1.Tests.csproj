@@ -108,13 +108,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TimeClock.Web\TimeClock.Web.csproj">
+      <Project>{90a0c33e-1ae0-4de7-85ce-c7a11b1511a2}</Project>
+      <Name>TimeClock.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Time\TimeClock.Data.csproj">
       <Project>{9ff1258a-ef19-4cc5-b9bb-f47cba1d4f0d}</Project>
       <Name>TimeClock.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebApplication1\TimeClock.Web.csproj">
-      <Project>{90A0C33E-1AE0-4DE7-85CE-C7A11B1511A2}</Project>
-      <Name>TimeClock.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
