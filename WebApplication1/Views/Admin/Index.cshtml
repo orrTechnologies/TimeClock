@@ -1,4 +1,5 @@
-﻿@{
+﻿@using TimeClock.Data.Models
+@{
     ViewBag.Title = "dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -6,16 +7,10 @@
 <<h1 class="page-header">Dashboard</h1>
 <div class="row">
     <div class="col-sm-4 col-lg-2">
-        <div class="employee-status-block status-in">
-            <span>2</span>
-            <span>Clocked In</span>
-        </div>
+        @Html.Action("StatusBlock", "Employees", new {status = TimePunchStatus.PunchedIn})
     </div>
     <div class="col-sm-4 col-lg-2">
-        <div class="employee-status-block status-out">
-            <span>2</span>
-            <span>Clocked Out</span>
-        </div>
+        @Html.Action("StatusBlock", "Employees", new { status = TimePunchStatus.PunchedOut })
     </div>
 </div>
 <h2 class="sub-header">Section title</h2>

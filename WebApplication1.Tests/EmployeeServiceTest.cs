@@ -32,8 +32,8 @@ namespace WebApplication1.Tests
 
                 var data = new List<Employee>()
                 {
-                    new Employee() {EmployeeId = 1, FirstName = "dylan", LastName = "orr"},
-                    new Employee() {EmployeeId = 2, FirstName = "Tyler", LastName = "Mork"}
+                    new Employee() {EmployeeId = 1, FirstName = "dylan", LastName = "orr", CurrentStatus = TimePunchStatus.PunchedIn},
+                    new Employee() {EmployeeId = 2, FirstName = "Tyler", LastName = "Mork", CurrentStatus = TimePunchStatus.PunchedOut}
                 }.AsQueryable();
 
 
@@ -252,6 +252,29 @@ namespace WebApplication1.Tests
 
                 service.UpdateEmployee(employee);
                 _context.Verify(m => m.SaveChanges(), Times.Once);
+            }
+        }
+
+        [TestClass]
+        public class TheGetByStatusMethod
+        {
+            private Mock<DbSet<Employee>> _employees;
+            private Mock<TimeClockContext> _context;
+
+            [TestInitialize]
+            public void Initialize()
+            {
+                _employees = new Mock<DbSet<Employee>>();
+                _context = new Mock<TimeClockContext>();
+
+            }
+            [TestMethod]
+            public void Given_A_Status_Should_return_Employees_Of_That_Status()
+            {
+                IEmployeeService service = ServicesTestHelper.CreateService();
+
+                List<Employee> employees = service.FindByStatus(TimePunchStatus.PunchedIn);
+                employees.ForEach(e => Assert.IsTrue(e.CurrentStatus == TimePunchStatus.PunchedIn));
             }
         }
 

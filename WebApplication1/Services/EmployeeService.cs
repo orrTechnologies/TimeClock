@@ -16,6 +16,11 @@ namespace TimeClock.Web.Services
             _context = context;
         }
 
+        public List<Employee> FindByStatus(TimePunchStatus status)
+        {
+            return _context.Employees.Where(e => e.CurrentStatus == status).ToList();
+        }
+
         public void CreateEmployee(Employee employee)
         {
             //TODO: Validate Employee

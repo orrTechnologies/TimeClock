@@ -116,9 +116,9 @@ body {
     font-weight: bold;
     font-size: 1.2em;
 }
-.employee-status-block.status-in {
+.employee-status-block.in {
         background: #3598dc;
 }
-.employee-status-block.status-out {
+.employee-status-block.out {
         background: #e7505a;
 }

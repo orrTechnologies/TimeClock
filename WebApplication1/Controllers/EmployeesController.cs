@@ -128,7 +128,16 @@ namespace TimeClock.Web.Controllers
             }
             return new RedirectResult(Request.UrlReferrer.AbsoluteUri);
         }
+        [ChildActionOnly]
+        public ActionResult StatusBlock(TimePunchStatus status)
+        {
+            var employeesWithStatus = _employeeService.FindByStatus(status);
+            string statusString = status == TimePunchStatus.PunchedIn ? "in" : "out";
 
+            ViewBag.CountWithStatus = employeesWithStatus.Count;
+            ViewBag.StatusString = statusString;
+            return PartialView();
+        }
         //// GET: Employees/Delete/5
         //public ActionResult Delete(int? id)
         //{
