@@ -1,0 +1,15 @@
+﻿@model ReportIndex
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+    
+    @Html.ListBoxFor(m => m.Employees, Model.EmployeeIds);
+    
+    <input type="submit" value="Submit"/>
+}
