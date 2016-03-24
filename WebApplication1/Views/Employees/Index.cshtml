@@ -1,5 +1,5 @@
 ﻿@using TimeClock.Data.Models
-@model IEnumerable<EmployeeViewModel>
+
 
 @{
     ViewBag.Title = "Index";
@@ -10,4 +10,4 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-@Html.Partial("_List", @Model)
+@Html.Action("List", "Employees")

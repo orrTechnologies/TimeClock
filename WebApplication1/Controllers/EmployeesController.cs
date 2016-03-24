@@ -25,7 +25,13 @@ namespace TimeClock.Web.Controllers
         // GET: Employees
         public ActionResult Index()
         {
-            return View(_employeeService.GetEmployeeList().Select(e => new EmployeeViewModel()
+            return  View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult List()
+        {
+            return PartialView(_employeeService.GetEmployeeList().Select(e => new EmployeeViewModel()
             {
                 FirstName = e.FirstName,
                 LastName = e.LastName,
@@ -120,7 +126,7 @@ namespace TimeClock.Web.Controllers
 
                 _timeService.AddTimePunch(employee, new TimePunch((int)id, status, DateTime.Now));
             }
-            return RedirectToAction("Index");
+            return new RedirectResult(Request.UrlReferrer.AbsoluteUri);
         }
 
         //// GET: Employees/Delete/5

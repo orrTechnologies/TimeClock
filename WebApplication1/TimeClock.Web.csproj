@@ -304,7 +304,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
-    <Content Include="Views\Employees\_List.cshtml" />
+    <Content Include="Views\Employees\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
