@@ -8,8 +8,10 @@
 
 @using (Html.BeginForm())
 {
+    @{ var ReportRequestViewMode = new ReportRequest();}
+    @Html.ListBoxFor(m => m.EmployeeIds, Model.Employees);
     
-    @Html.ListBoxFor(m => m.Employees, Model.EmployeeIds);
+    @Html.EditorForModel(ReportRequest);
     
     <input type="submit" value="Submit"/>
 }

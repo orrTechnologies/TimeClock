@@ -26,13 +26,15 @@ namespace TimeClock.Web.Controllers
             ReportIndex view = new ReportIndex();
             List<Employee> employees = _employeeService.GetEmployeeList();
 
-            MultiSelectList list = new MultiSelectList(employees);
-
-            return View(new ReportIndex()
+            List<SelectListItem> list = employees.Select(e => new SelectListItem()
             {
-                Employees = list
-            });
+                Text = e.FirstName,
+                Value = Convert.ToString(e.EmployeeId)
+            }).ToList();
 
+            view.Employees = list;
+
+            return View(view);
         }
         [HttpPost]
         public ActionResult Index(ReportRequest reportRequest)

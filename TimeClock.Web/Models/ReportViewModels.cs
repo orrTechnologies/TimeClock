@@ -16,8 +16,8 @@ namespace TimeClock.Web.Models
 
     public class ReportIndex
     {
-        public MultiSelectList Employees { get; set; }
-        public IEnumerable<SelectListItem> EmployeeIds { get; set; }
+        public IEnumerable<SelectListItem> Employees { get; set; }
+        public IEnumerable<int> EmployeeIds { get; set; }
 
     }
 }
