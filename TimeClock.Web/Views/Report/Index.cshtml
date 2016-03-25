@@ -4,12 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Time </h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("TimeReport", "Report"))
 {
-    
-    @Html.ListBoxFor(m => m.Employees, Model.EmployeeIds);
-    
+    @Html.Partial("_ReportRequest", new ReportRequest(){EmployeSelectListItems = Model.EmployeSelectListItems}, ViewData)
     <input type="submit" value="Submit"/>
 }

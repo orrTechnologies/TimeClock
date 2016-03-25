@@ -320,6 +320,7 @@
     <Content Include="Views\Employees\List.cshtml" />
     <Content Include="Views\Employees\StatusBlock.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Report\_ReportRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Runtime.Remoting.Proxies;
 using System.Web;
 using System.Web.Mvc;
@@ -13,10 +14,12 @@ namespace TimeClock.Web.Controllers
     public class ReportController : Controller
     {
         private readonly IEmployeeService _employeeService;
+        private readonly ITimeService _timeService;
 
-        public ReportController(IEmployeeService employeeService)
+        public ReportController(IEmployeeService employeeService, ITimeService timeService)
         {
             _employeeService = employeeService;
+            _timeService = timeService;
         }
 
         //
@@ -26,23 +29,47 @@ namespace TimeClock.Web.Controllers
             ReportIndex view = new ReportIndex();
             List<Employee> employees = _employeeService.GetEmployeeList();
 
-            MultiSelectList list = new MultiSelectList(employees);
+            List<SelectListItem> employeSelectList = new List<SelectListItem>();
+            employees.ForEach(e => employeSelectList.Add(new SelectListItem()
+            {
+                Text = e.FirstName,
+                Value = Convert.ToString(e.EmployeeId)
+            }));
 
             return View(new ReportIndex()
             {
-                Employees = list
+                EmployeSelectListItems = employeSelectList
             });
 
-        }
-        [HttpPost]
-        public ActionResult Index(ReportRequest reportRequest)
-        {
-            return null;
         }
 
         public ActionResult TimeReport(ReportRequest reportRequest)
         {
-            return null;
+                   //For each employee get a list of punchtimes in start and end time range.
+            if (reportRequest.EmployeeIds == null)
+            {
+                return new HttpNotFoundResult("Must select at least one employee");
+            }
+            var timeReports = new List<TimeReport>();
+
+            foreach (var employeeId in reportRequest.EmployeeIds)
+            {
+                Employee employee = _employeeService.FindById(employeeId);
+
+                var timePuches = _timeService.GetPunchList(employee.EmployeeId,
+                    new TimeClockSpan(reportRequest.StartTime, reportRequest.EndTime));
+
+                var report = new TimeReport()
+                {
+                    Employee = employee,
+                    StartTime = reportRequest.StartTime,
+                    EndTime = reportRequest.EndTime,
+                    TimePunches = timePuches
+                };
+                timeReports.Add(report);
+            }
+
+            return View(timeReports);
         }
 	}
 }
