@@ -6,5 +6,7 @@ This is a Alpha ASP.net employee time clock project aimed at replacing manual ti
 
 <b> RoadMap </b>
 <br>
-  TimeReports that will show you how long each employee work in a given time frame.
-  Admin panel.
+<ul>
+  <li>TimeReports that will show you how long each employee work in a given time frame.</li>
+  <li>Admin panel.</li>
+</ul>
