@@ -9,7 +9,7 @@ namespace TimeClock.Web.Models
     {
         Employee Employee { get; }
         IEnumerable<TimeReportDaily> DailyReports();
-        double TimeWorked();
+        double TimeWorked { get; }
     }
 
     public class TimeReport : ITimeReport
@@ -17,6 +17,19 @@ namespace TimeClock.Web.Models
 
         public  Employee Employee { get; private set; }
         private readonly IEnumerable<TimePunch> _timePunches;
+        private double _totalTimeWorked = -1;
+        //Cache the result. 
+        public double TimeWorked
+        {
+            get
+            {
+                if (_totalTimeWorked == -1)
+                {
+                    _totalTimeWorked = CalculateTotalHoursWorked();
+                }
+                return _totalTimeWorked;;
+            }
+        }
 
         public TimeReport(Employee employee, IEnumerable<TimePunch> timePunches)
         {
@@ -36,11 +49,11 @@ namespace TimeClock.Web.Models
             return dailyReports;
         }
 
-        public double TimeWorked()
+        private double CalculateTotalHoursWorked()
         {
             double totalTime = 0;
             var punchCount = _timePunches.Count();
-            for (int i = 1; i < punchCount; i += 2)
+            for (int i = 0; i < punchCount; i += 2)
             {
                 var timeOne = _timePunches.ElementAt(i).Time;
                 DateTime timeTwo;
