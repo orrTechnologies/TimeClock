@@ -6,7 +6,7 @@
 
 <h2>Time </h2>
 
-@using (Html.BeginForm("TimeReport", "Report"))
+@using (Html.BeginForm("Report", "Report"))
 {
     @Html.Partial("_ReportRequest", new ReportRequest(){EmployeSelectListItems = Model.EmployeSelectListItems}, ViewData)
     <input type="submit" value="Submit"/>

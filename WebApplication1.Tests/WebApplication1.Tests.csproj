@@ -100,6 +100,7 @@
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="EmployeeServiceTest.cs" />
     <Compile Include="TimeServiceTest.cs" />
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

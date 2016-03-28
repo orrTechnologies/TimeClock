@@ -4,6 +4,7 @@
 <h2>@Model.Employee.FullName</h2>
 
 @foreach (var item in Model.DailyReports)
-{
-    
-}
+    {
+        @Html.Partial("~/Views/Report/_DailyTimeReport.cshtml", item)
+    }
+<span>Total: @Model.TimeWorked</span>

@@ -15,13 +15,13 @@ namespace TimeClock.Web.Controllers
 {
     public class ReportController : Controller
     {
+        private readonly IReportService _reportService;
         private readonly IEmployeeService _employeeService;
-        private readonly ITimeService _timeService;
 
-        public ReportController(IEmployeeService employeeService, ITimeService timeService)
+        public ReportController(IReportService reportService, IEmployeeService employeeService)
         {
+            _reportService = reportService;
             _employeeService = employeeService;
-            _timeService = timeService;
         }
 
         //
@@ -52,20 +52,11 @@ namespace TimeClock.Web.Controllers
             {
                 return new HttpNotFoundResult("Must select at least one employee");
             }
-            var timeReports = new List<TimeReport>();
-
-            foreach (var employeeId in reportRequest.EmployeeIds)
+            List<ITimeReport> timeReports = new List<ITimeReport>();
+            foreach (int employeeId in reportRequest.EmployeeIds)
             {
-                Employee employee = _employeeService.FindById(employeeId);
-
-                var timePuches = _timeService.GetPunchList(employee.EmployeeId,
+                var timeReport = _reportService.GenerateTimeWorkReport(employeeId,
                     new TimeClockSpan(reportRequest.StartTime, reportRequest.EndTime));
-
-                var timeReport = new TimeReport()
-                {
-                    Employee = employee,
-                    DailyReports = MakeDailyReports(timePuches)
-                };
                 timeReports.Add(timeReport);
             }
             Report report = new Report()
@@ -83,7 +74,7 @@ namespace TimeClock.Web.Controllers
             var dailyReports = timePunchByDay.Select(t => new TimeReportDaily()
             {
                 Date = t.Key,
-                TimePunch = t
+                TimePunches = t.ToList()
             });
 
             return dailyReports;
