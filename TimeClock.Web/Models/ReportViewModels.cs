@@ -14,17 +14,31 @@ namespace TimeClock.Web.Models
         [Required]
         public IEnumerable<int> EmployeeIds { get; set; }
         [Required]
-        public DateTime StartTime { get; set; }
+        public DateTime StartTime {
+            get { return DateTime.Now; } }
         [Required]
+        public DateTime EndTime { get; set; }
+    }
+
+    public class Report
+    {
+        public IEnumerable<TimeReport> TimeReports { get; set; }
+        public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
     }
 
     public class TimeReport
     {
         public Employee Employee { get; set; }
-        public IEnumerable<TimePunch> TimePunches { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public IEnumerable<TimeReportDaily> DailyReports { get; set; }
+
+        public double TimeWorked { get; set; }
+    }
+
+    public class TimeReportDaily
+    {
+        public DateTime Date { get; set; }
+        public IEnumerable<TimePunch> TimePunch { get; set; }
     }
 
     public class ReportIndex

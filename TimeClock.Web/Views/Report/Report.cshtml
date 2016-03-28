@@ -1,0 +1,17 @@
+﻿@model Report
+
+@{
+    ViewBag.Title = "TimeReports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Time Report</h2>
+<div>
+    <span>@Html.DisplayNameFor(model => model.StartTime) - @Html.DisplayNameFor(model => model.EndTime)</span>
+</div>
+
+
+@foreach (var item in Model.TimeReports)
+{
+    @Html.Partial("_TimeReport", item)
+}

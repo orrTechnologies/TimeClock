@@ -321,6 +321,8 @@
     <Content Include="Views\Employees\StatusBlock.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
     <Content Include="Views\Report\_ReportRequest.cshtml" />
+    <Content Include="Views\Report\Report.cshtml" />
+    <Content Include="Views\Report\_TimeReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
