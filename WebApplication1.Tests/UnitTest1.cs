@@ -21,6 +21,29 @@ namespace WebApplication1.Tests
 
                 var report = new TimeReport(new Employee(), timePunches);
                 Assert.IsTrue(report.TimeWorked == 1);
+            }
+            [TestMethod]
+            public void Given_Four_Times_Return_Time_ClockedIn()
+            {
+                var timePunches = new List<TimePunch>();
+                timePunches.Add(new TimePunch(1, TimePunchStatus.PunchedIn, new DateTime(2016, 1, 1, 1, 1, 1)));
+                timePunches.Add(new TimePunch(1, TimePunchStatus.PunchedOut, new DateTime(2016, 1, 1, 2, 1, 1)));
+                timePunches.Add(new TimePunch(1, TimePunchStatus.PunchedIn, new DateTime(2016, 1, 1, 3, 1, 1)));
+                timePunches.Add(new TimePunch(1, TimePunchStatus.PunchedOut, new DateTime(2016, 1, 1, 4, 1, 1)));
+                var report = new TimeReport(new Employee(), timePunches);
+                Assert.IsTrue(report.TimeWorked == 2);
+            }
+            [TestMethod]
+            public void If_First_Time_Is_Clocked_Out_Skip()
+            {
+                var timePunches = new List<TimePunch>();
+                timePunches.Add(new TimePunch(1, TimePunchStatus.PunchedOut, new DateTime(2016, 1, 1, 1, 1, 1)));
+                timePunches.Add(new TimePunch(1, TimePunchStatus.PunchedIn, new DateTime(2016, 1, 1, 2, 1, 1)));
+                timePunches.Add(new TimePunch(1, TimePunchStatus.PunchedOut, new DateTime(2016, 1, 1, 3, 1, 1)));
+                timePunches.Add(new TimePunch(1, TimePunchStatus.PunchedIn, new DateTime(2016, 1, 1, 4, 1, 1)));
+                timePunches.Add(new TimePunch(1, TimePunchStatus.PunchedOut, new DateTime(2016, 1, 1, 5, 1, 1)));
+                var report = new TimeReport(new Employee(), timePunches);
+                Assert.IsTrue(report.TimeWorked == 2);
             }  
         }
     }
