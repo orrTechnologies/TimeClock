@@ -4,16 +4,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 class="page-header">Status Overview</h1>
+
 <div class="row">
-    <div class="col-sm-4 col-lg-2">
-        @Html.Action("StatusBlock", "Employees", new {status = TimePunchStatus.PunchedIn})
-    </div>
-    <div class="col-sm-4 col-lg-2">
-        @Html.Action("StatusBlock", "Employees", new { status = TimePunchStatus.PunchedOut })
+    <div class="col-sm-12">
+        <div class="panel">
+            <div class="panel-title">
+                <span>Employee Overview</span>
+            </div>
+            <div class="col-sm-4 col-lg-2">
+                @Html.Action("StatusBlock", "Employees", new {status = TimePunchStatus.PunchedIn})
+            </div>
+            <div class="col-sm-4 col-lg-2">
+                @Html.Action("StatusBlock", "Employees", new {status = TimePunchStatus.PunchedOut})
+            </div>
+            <div class="clearfix"></div>
+        </div>
     </div>
 </div>
-<h2 class="sub-header">Section title</h2>
 <div class="table-responsive">
-  @Html.Action("List", "Employees")
+    @Html.Action("List", "Employees")
 </div>

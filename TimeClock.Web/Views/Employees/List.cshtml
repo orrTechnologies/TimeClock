@@ -1,6 +1,9 @@
 ﻿@using TimeClock.Data.Models
 @model IEnumerable<EmployeeViewModel>
-
+<div class="panel">
+    <div class="panel-title">
+        <span>Employee List</span>
+    </div>
     <table class="table">
         <tr>
             <th>
@@ -32,15 +35,15 @@
                     <button>
                         @if (item.CurrentStatus == TimePunchStatus.PunchedIn)
                         {
-                            @Html.ActionLink("Clock Out", "Clock", new { id = item.EmployeeId, status = TimePunchStatus.PunchedOut })
+                            @Html.ActionLink("Clock Out", "Clock", new {id = item.EmployeeId, status = TimePunchStatus.PunchedOut})
                         }
                         else
                         {
-                            @Html.ActionLink("Clock in", "Clock", new { id = item.EmployeeId, status = TimePunchStatus.PunchedIn })
+                            @Html.ActionLink("Clock in", "Clock", new {id = item.EmployeeId, status = TimePunchStatus.PunchedIn})
                         }
                     </button>
                 </td>
             </tr>
         }
-
     </table>
+</div>
