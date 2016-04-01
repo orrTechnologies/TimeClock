@@ -19,9 +19,16 @@ namespace TimeClock.Web.Models
     }
     public class Report
     {
-        public IEnumerable<ITimeReport> TimeReports { get; set; }
+        public IEnumerable<TimeReportViewModel> TimeReports { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
+    }
+
+    public class TimeReportViewModel
+    {
+        public string EmployeeName { get; set; }
+        public IEnumerable<TimeReportDaily> DailyReports { get; set; }
+        public double TimeWorked { get; set; }
     }
     public class TimeReportDaily
     {

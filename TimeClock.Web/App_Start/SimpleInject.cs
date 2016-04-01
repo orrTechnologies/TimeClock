@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Web.Compilation;
 using System.Web.Mvc;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
@@ -20,6 +21,7 @@ namespace TimeClock.Web
             container.Register<TimeClockContext, TimeClockContext>(Lifestyle.Scoped);
             container.Register<IEmployeeService, EmployeeService>(Lifestyle.Scoped);
             container.Register<ITimeService, TimeService>(Lifestyle.Scoped);
+            container.Register<IReportService, ReportService>(Lifestyle.Scoped);
             // This is an extension method from the integration package.
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
 

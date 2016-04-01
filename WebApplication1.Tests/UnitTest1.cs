@@ -44,7 +44,15 @@ namespace WebApplication1.Tests
                 timePunches.Add(new TimePunch(1, TimePunchStatus.PunchedOut, new DateTime(2016, 1, 1, 5, 1, 1)));
                 var report = new TimeReport(new Employee(), timePunches);
                 Assert.IsTrue(report.TimeWorked == 2);
-            }  
+            }
+            [TestMethod]
+            public void Given_No_Time_Punches_Returns_0()
+            {
+                var timePunches = new List<TimePunch>();
+                var report = new TimeReport(new Employee(), timePunches);
+
+                Assert.IsTrue(report.TimeWorked == 0);
+            }
         }
     }
 }
