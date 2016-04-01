@@ -1,10 +1,10 @@
 ﻿@using TimeClock.Data.Models
 @{
-    ViewBag.Title = "dashboard";
+    ViewBag.Title = "TimeClock Admin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<<h1 class="page-header">Dashboard</h1>
+<<h1 class="page-header">Employee Status Overview</h1>
 <div class="row">
     <div class="col-sm-4 col-lg-2">
         @Html.Action("StatusBlock", "Employees", new {status = TimePunchStatus.PunchedIn})
