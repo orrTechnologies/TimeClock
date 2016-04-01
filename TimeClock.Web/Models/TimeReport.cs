@@ -27,7 +27,7 @@ namespace TimeClock.Web.Models
                 {
                     _totalTimeWorked = CalculateTotalHoursWorked();
                 }
-                return _totalTimeWorked;;
+                return _totalTimeWorked;
             }
         }
 
@@ -46,12 +46,13 @@ namespace TimeClock.Web.Models
                 TimePunches = t.ToList()
             });
 
-            return dailyReports;
+            return dailyReports.ToList();
         }
 
         private double CalculateTotalHoursWorked()
         {
             double totalTime = 0;
+            if (_timePunches.Count() == 0) return 0;
             //skip first time if it is punched out. No punch in time to calulcate time worked with. 
             if (_timePunches.First().Status == TimePunchStatus.PunchedOut)
             {

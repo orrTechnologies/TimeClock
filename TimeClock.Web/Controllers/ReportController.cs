@@ -63,7 +63,12 @@ namespace TimeClock.Web.Controllers
             {
                 StartTime = reportRequest.StartTime,
                 EndTime = reportRequest.EndTime,
-                TimeReports = timeReports
+                TimeReports = timeReports.Select(r => new TimeReportViewModel()
+                {
+                    DailyReports = r.DailyReports(),
+                    EmployeeName = r.Employee.FirstName + " " + r.Employee.LastName,
+                    TimeWorked = r.TimeWorked
+                })
             };
             return View(report);
         }
