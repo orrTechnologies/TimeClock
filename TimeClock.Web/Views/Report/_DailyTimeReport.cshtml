@@ -1,0 +1,32 @@
+﻿@model TimeReportDaily
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeWorked)
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.Date.DayOfWeek) @Html.DisplayFor(model => model.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.TimeWorked)
+        </td>
+    </tr>
+    @foreach (var item in Model.TimePunches)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time.TimeOfDay);
+            </td>
+        </tr>
+    }
+
+</table>

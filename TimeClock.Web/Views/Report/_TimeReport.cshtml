@@ -1,10 +1,11 @@
 ﻿@model TimeReportViewModel
 
+<div class="panel">
+<div class="panel-title"><span><h2>@Html.DisplayFor(model => model.EmployeeName)</h2> </span></div>
 
-<h2>@Model.EmployeeName</h2>
-
-@foreach (var item in Model.DailyReports)
+    @foreach (var item in Model.DailyReports)
     {
         @Html.Partial("~/Views/Report/_DailyTimeReport.cshtml", item)
     }
-<span>Total: @Model.TimeWorked</span>
+    <span>Total: @Model.TimeWorked</span>
+</div>

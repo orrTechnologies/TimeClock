@@ -20,7 +20,11 @@ namespace TimeClock.Web.Models
     public class Report
     {
         public IEnumerable<TimeReportViewModel> TimeReports { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime StartTime { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime EndTime { get; set; }
     }
 
