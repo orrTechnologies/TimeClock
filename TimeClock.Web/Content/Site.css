@@ -43,18 +43,6 @@ button a:hover {
     color: #fff;
     text-decoration: none;
 }
-
-.panel {
-    padding: 10px 0;
-    background-color: #fff;
-    border-color: #ddd;
-}
-.panel-title {
-    border-bottom: 1px solid #ddd;
-    padding: 0px 0px 0px 14px;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
 /********* Nav bar **********/
 .sidebar {
     background-color: #444444!important;
