@@ -72,7 +72,9 @@ button a:hover {
     color: #fff;
 }
 
-
+@media (min-width: 768px) {
+    .sidebar { top: 50px; }
+}
 /********* Employee Index **********/
 .punch-status {
     width: 15px;
