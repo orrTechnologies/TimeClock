@@ -22,7 +22,16 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/********** Header  *********/
+.navbar-toggle {
+    float: left;
+}
+.navbar-brand {
+    float: right;
+}
 /********** General  *********/
+
 body {
     background: #e9eaed;
 }

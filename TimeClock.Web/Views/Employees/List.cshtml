@@ -1,6 +1,6 @@
 ﻿@using TimeClock.Data.Models
 @model IEnumerable<EmployeeViewModel>
-<div class="panel">
+<div class="panel employee-list">
     <div class="panel-title">
         <span>Employee List</span>
     </div>
@@ -32,7 +32,7 @@
                     @Html.DisplayFor(modelItem => item.LastPunchTime)
                 </td>
                 <td>
-                    <button>
+                    <button class="btn btn-default">
                         @if (item.CurrentStatus == TimePunchStatus.PunchedIn)
                         {
                             @Html.ActionLink("Clock Out", "Clock", new {id = item.EmployeeId, status = TimePunchStatus.PunchedOut})
