@@ -9,12 +9,15 @@ namespace TimeClock.Web.Models
 {
     public class ReportRequest
     {
+        [Display(Name = "Select Employees")]
         public IEnumerable<SelectListItem> EmployeSelectListItems { get; set; }
         [Required]
         public IEnumerable<int> EmployeeIds { get; set; }
         [Required]
+        [Display(Name = "Start Time")]
         public DateTime StartTime { get; set; }
         [Required]
+        [Display(Name = "End Time")]
         public DateTime EndTime { get; set; }
     }
     public class Report

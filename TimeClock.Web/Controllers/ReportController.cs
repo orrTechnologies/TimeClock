@@ -34,7 +34,7 @@ namespace TimeClock.Web.Controllers
             List<SelectListItem> employeSelectList = new List<SelectListItem>();
             employees.ForEach(e => employeSelectList.Add(new SelectListItem()
             {
-                Text = e.FirstName,
+                Text = e.FullName,
                 Value = Convert.ToString(e.EmployeeId)
             }));
 

@@ -1,52 +1,49 @@
 ﻿@using TimeClock.Data.Models
 @model IEnumerable<EmployeeViewModel>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <span>Employee List</span>
-        </div>
-        <div class="panel-body">
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FullName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CurrentStatus)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LastPunchTime)
-                    </th>
-                    <th>
-                        Actions
-                    </th>
-                </tr>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FullName)
-                        </td>
-                        <td>
-                            <div class="punch-status  @item.CurrentStatusClass"></div>
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LastPunchTime)
-                        </td>
-                        <td>
-                            <button>
-                                @if (item.CurrentStatus == TimePunchStatus.PunchedIn)
-                                {
-                                    @Html.ActionLink("Clock Out", "Clock", new { id = item.EmployeeId, status = TimePunchStatus.PunchedOut })
-                                }
-                                else
-                                {
-                                    @Html.ActionLink("Clock in", "Clock", new { id = item.EmployeeId, status = TimePunchStatus.PunchedIn })
-                                }
-                            </button>
-                        </td>
-                    </tr>
-                }
-            </table>
-        </div>
+<div class="panel employee-list">
+    <div class="panel-title">
+        <span>Employee List</span>
     </div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastPunchTime)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    <div class="punch-status  @item.CurrentStatusClass"></div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastPunchTime)
+                </td>
+                <td>
+                    <button class="btn btn-default">
+                        @if (item.CurrentStatus == TimePunchStatus.PunchedIn)
+                        {
+                            @Html.ActionLink("Clock Out", "Clock", new {id = item.EmployeeId, status = TimePunchStatus.PunchedOut})
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Clock in", "Clock", new {id = item.EmployeeId, status = TimePunchStatus.PunchedIn})
+                        }
+                    </button>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
