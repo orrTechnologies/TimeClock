@@ -7,15 +7,17 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <div class="panel">
-            <div class="panel-title">
+        <div class="panel panel-default">
+            <div class="panel-heading">
                 <span>Employee Overview</span>
             </div>
-            <div class="col-sm-4 col-lg-2">
-                @Html.Action("StatusBlock", "Employees", new {status = TimePunchStatus.PunchedIn})
-            </div>
-            <div class="col-sm-4 col-lg-2">
-                @Html.Action("StatusBlock", "Employees", new {status = TimePunchStatus.PunchedOut})
+            <div class="panel-body">
+                <div class="col-sm-4 col-lg-2">
+                    @Html.Action("StatusBlock", "Employees", new { status = TimePunchStatus.PunchedIn })
+                </div>
+                <div class="col-sm-4 col-lg-2">
+                    @Html.Action("StatusBlock", "Employees", new { status = TimePunchStatus.PunchedOut })
+                </div>
             </div>
             <div class="clearfix"></div>
         </div>

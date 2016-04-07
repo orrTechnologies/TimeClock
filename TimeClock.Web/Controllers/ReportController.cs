@@ -52,13 +52,10 @@ namespace TimeClock.Web.Controllers
             {
                 return new HttpNotFoundResult("Must select at least one employee");
             }
-            List<ITimeReport> timeReports = new List<ITimeReport>();
-            foreach (int employeeId in reportRequest.EmployeeIds)
-            {
-                var timeReport = _reportService.GenerateTimeWorkReport(employeeId,
-                    new TimeClockSpan(reportRequest.StartTime, reportRequest.EndTime));
-                timeReports.Add(timeReport);
-            }
+            List<ITimeReport> timeReports = reportRequest.EmployeeIds
+                .Select(employeeId => _reportService.GenerateTimeWorkReport(employeeId, new TimeClockSpan(reportRequest.StartTime, reportRequest.EndTime)))
+                .ToList();
+
             Report report = new Report()
             {
                 StartTime = reportRequest.StartTime,
