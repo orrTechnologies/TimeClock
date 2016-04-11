@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using TimeClock.Data;
 using TimeClock.Web.Models;
 
 namespace TimeClock.Web.Controllers
