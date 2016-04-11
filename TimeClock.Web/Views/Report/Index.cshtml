@@ -3,11 +3,19 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Time </h2>
-
-@using (Html.BeginForm("Report", "Report"))
-{
-    @Html.Partial("_ReportRequest", new ReportRequest(){EmployeSelectListItems = Model.EmployeSelectListItems}, ViewData)
-    <input type="submit" value="Submit"/>
-}
+<div class="row">
+    <div class="time-report-request col-lg-6 col-lg-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span>Time </span>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("Report", "Report"))
+                {
+                    @Html.Partial("_ReportRequest", new ReportRequest() { EmployeSelectListItems = Model.EmployeSelectListItems }, ViewData)
+                    <input type="submit" value="Submit" />
+                }
+            </div>
+        </div>
+    </div>
+</div>

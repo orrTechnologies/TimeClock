@@ -23,6 +23,46 @@ textarea {
     max-width: 280px;
 }
 
+/********** Header  *********/
+.navbar-toggle {
+    float: left;
+}
+.navbar-brand {
+    float: right;
+}
+/********** General  *********/
+
+body {
+    background: #e9eaed;
+}
+button {
+    background: #444444;
+    color: #fff;
+    border-color: #444;
+    border-radius: 4px;
+    padding: 5px;
+}
+button:hover {
+      background: #2F2F2F;
+}
+button a{
+    color: #fff;
+}
+button a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+/********* Nav bar **********/
+.sidebar {
+    background-color: #444444!important;
+}
+.sidebar a {
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    .sidebar { top: 50px; }
+}
 /********* Employee Index **********/
 .punch-status {
     width: 15px;

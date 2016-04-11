@@ -18,11 +18,15 @@ namespace TimeClock.Data.Migrations
 
         protected override void Seed(TimeClockContext context)
         {
-
-            context.Employees.AddOrUpdate(
-                new Employee() { FirstName = "dylan", LastName = "orr", LastPunchTime = DateTime.Now},
-                    new Employee() { FirstName = "Tyler", LastName = "Mork", LastPunchTime = DateTime.Now }
-                    );
+            for (int i = 0; i < 30; i++)
+            {
+                context.Employees.AddOrUpdate(new Employee()
+                {
+                    FirstName = "EmployeeNumber" + i,
+                    LastName = "Last",
+                    LastPunchTime = DateTime.Now
+                });
+            }
 
             //  This method will be called after migrating to the latest version.
 

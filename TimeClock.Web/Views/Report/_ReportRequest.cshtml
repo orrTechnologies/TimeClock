@@ -2,7 +2,7 @@
 
 <div class="form-horizontal">
     <div class="form-group">
-        @Html.LabelFor(model => model.EmployeSelectListItems, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.EmployeSelectListItems, htmlAttributes: new { @class = "control-label col-md-3" })
         <div class="col-md-10">
             @Html.ListBoxFor(m => m.EmployeeIds, Model.EmployeSelectListItems)
             @Html.ValidationMessageFor(m => m.EmployeSelectListItems, "", new { @class = "text-danger" })
