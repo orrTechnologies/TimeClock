@@ -7,15 +7,24 @@ namespace TimeClock.Web
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            BundleTable.EnableOptimizations = true;
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
+
             bundles.Add(new ScriptBundle("~/bundles/moment").Include(
                  "~/Scripts/moment.js", 
                  "~/Scripts/moment-timezone-with-data-2010-2020.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/timeclock").Include(
+            "~/Scripts/timeclock.js"));
+            bundles.UseCdn = true;
+
+            bundles.Add(new ScriptBundle("~/bundles/datatables","http://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"));
+            bundles.Add(new StyleBundle("~/Content/css/datatables", "http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
