@@ -33,11 +33,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li class="@Html.IsSelected(controllers: "employees")"><a href="/employees/index">Employee <span class="sr-only">(current)</span></a></li>
-                <li class="@Html.IsSelected(controllers: "admin")"><a href="/admin">Admin</a></li>
-                <li class="@Html.IsSelected(controllers: "report")"><a href="/report">Reports</a></li>
-            </ul>
+            @Html.Action("SideBarMenu", "Common")
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             @RenderBody()

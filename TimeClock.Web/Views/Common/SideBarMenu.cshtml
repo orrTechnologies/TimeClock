@@ -1,0 +1,8 @@
+﻿@using TimeClock.Web.Helpers
+@model TimeClock.Web.Controllers.SideBarMenuViewModel
+
+<ul class="nav nav-sidebar">
+    <li class="@Html.IsSelected(controllers: "employees")"><a href="/employees/index">Employee <span class="sr-only">(current)</span></a></li>
+    <li class="@Html.IsSelected(controllers: "admin")"><a href="/admin">Admin</a></li>
+    <li class="@Html.IsSelected(controllers: "report")"><a href="/report">Reports</a></li>
+</ul>
