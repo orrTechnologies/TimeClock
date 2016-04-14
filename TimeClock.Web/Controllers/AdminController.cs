@@ -14,5 +14,15 @@ namespace TimeClock.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult Employees()
+        {
+            return View();
+        }
 	}
+
+    public class EmployeeManagerViewModel
+    {
+        public 
+    }
 }

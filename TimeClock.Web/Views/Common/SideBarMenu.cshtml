@@ -3,6 +3,13 @@
 
 <ul class="nav nav-sidebar">
     <li class="@Html.IsSelected(controllers: "employees")"><a href="/employees/index">Employee <span class="sr-only">(current)</span></a></li>
-    <li class="@Html.IsSelected(controllers: "admin")"><a href="/admin">Admin</a></li>
+
+    <li class="@Html.IsSelected(controllers: "admin")"><a href="/admin">Admin</a>
+        <ul class="sub-nav">
+            <li>
+                <a href="/admin/employees">Employee Manger</a>
+            </li>
+        </ul>
+    </li>
     <li class="@Html.IsSelected(controllers: "report")"><a href="/report">Reports</a></li>
 </ul>
