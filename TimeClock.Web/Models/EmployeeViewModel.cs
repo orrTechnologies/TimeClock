@@ -23,6 +23,14 @@ namespace TimeClock.Web.Models
         {
             get { return FirstName + " " + LastName; }
         }
+        public string CurrentStatusClass
+        {
+            get
+            {
+                return CurrentStatus == TimePunchStatus.PunchedIn ?
+                    "punched-in" : "punched-out";
+            }
+        }
     }
 
     public class EmployeeCreateViewModel
@@ -35,4 +43,10 @@ namespace TimeClock.Web.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
     }
+    public class EmployeeManagerViewModel
+    {
+        public int EmployeeId { get; set; }
+        public string FullName { get; set; }
+    }
+      
 }

@@ -138,40 +138,42 @@ namespace TimeClock.Web.Controllers
             ViewBag.StatusString = statusString;
             return PartialView();
         }
-        //// GET: Employees/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Employee employee = db.Employees.Find(id);
-        //    if (employee == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(employee);
-        //}
 
-        //// POST: Employees/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    Employee employee = db.Employees.Find(id);
-        //    db.Employees.Remove(employee);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+        public ActionResult EmployeeManager()
+        {
+            var emloyees = _employeeService.GetEmployeeList()
+                .Select(e => new EmployeeManagerViewModel()
+                {
+                    EmployeeId = e.EmployeeId,
+                    FullName = e.FullName
+                });
+            return View(emloyees);
+        }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        // GET: Employees/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Employee employee = _employeeService.FindById(id);
+            if (employee == null)
+            {
+                return HttpNotFound();
+            }
+            return View(employee);
+        }
+
+        // POST: Employees/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Employee employee = _employeeService.FindById(id);
+            _employeeService.DeleteEmployee(employee);
+            return RedirectToAction("Index");
+        }
 
 
     }

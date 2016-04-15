@@ -58,9 +58,10 @@ namespace TimeClock.Web.Services
             _context.SaveChanges();
         }
 
-        private void AddPunchTime(Employee employee, TimePunch time)
+        public void DeleteEmployee(Employee employee)
         {
-            
+            _context.Employees.Remove(employee);
+            _context.SaveChanges();
         }
     }
 }

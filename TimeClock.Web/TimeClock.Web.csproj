@@ -331,6 +331,7 @@
     <Content Include="Views\Report\_TimeReport.cshtml" />
     <Content Include="Views\Report\_DailyTimeReport.cshtml" />
     <Content Include="Views\Common\SideBarMenu.cshtml" />
+    <Content Include="Views\Employees\EmployeeManager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

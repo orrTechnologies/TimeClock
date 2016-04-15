@@ -13,5 +13,7 @@ namespace TimeClock.Web.Services
         Employee FindById(int? id);
         void UpdateEmployee(Employee employee);
 
+
+        void DeleteEmployee(Employee employee);
     }
 }
