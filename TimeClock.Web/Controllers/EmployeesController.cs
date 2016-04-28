@@ -167,7 +167,7 @@ namespace TimeClock.Web.Controllers
 
         // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+       // [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Employee employee = _employeeService.FindById(id);
