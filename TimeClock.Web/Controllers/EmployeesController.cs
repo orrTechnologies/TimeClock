@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using TimeClock.Data.Models;
 using TimeClock.Web.Models;
@@ -172,7 +173,8 @@ namespace TimeClock.Web.Controllers
         {
             Employee employee = _employeeService.FindById(id);
             _employeeService.DeleteEmployee(employee);
-            return RedirectToAction("Index");
+
+            return  Json(new { success = true });
         }
 
 
