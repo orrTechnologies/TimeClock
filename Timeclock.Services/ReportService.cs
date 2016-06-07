@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Threading.Tasks;
 using TimeClock.Data.Models;
 using TimeClock.Web.Models;
+using TimeClock.Web.Services;
 
-namespace TimeClock.Web.Services
+namespace Timeclock.Services
 {
     public interface IReportService
     {
@@ -22,10 +20,10 @@ namespace TimeClock.Web.Services
             _timeService = timeService;
         }
 
-        public ITimeReport GenerateTimeWorkReport(int employeeId, TimeClockSpan span)
+        public  ITimeReport GenerateTimeWorkReport(int employeeId, TimeClockSpan span)
         {
             Employee employee = _employeeService.FindById(employeeId);
-            var timePuches = _timeService.GetPunchList(employee.EmployeeId, span);
+            var timePuches =  _timeService.GetPunchList(employee.EmployeeId, span);
 
             ITimeReport timeReport = new TimeReport(employee, timePuches);
 

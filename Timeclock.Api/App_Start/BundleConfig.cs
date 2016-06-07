@@ -9,9 +9,19 @@ namespace Timeclock.Api
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                "~/Scripts/angular.js"));
+                "~/Scripts/angular.js",
+                "~/Scripts/angular-route.js",
+                "~/Scripts/angular-resource.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/timeclock").Include(
-            "~/app/app.js"));
+            "~/app/app.js",
+            "~/app/employees/employee-controller.js",
+              "~/app/employees/employee-repository.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/sbadmin")
+                .Include("~/Scripts/sb-admin-2.js",
+                "~/Scripts/metisMenu.js",
+                "~/Scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
@@ -30,6 +40,11 @@ namespace Timeclock.Api
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css",
                 "~/Content/bootstrap.css"));
+
+            bundles.Add(new StyleBundle("~/Content/sbadmin").Include(
+                "~/Content/sbadmin/sb-admin-2.css",
+                "~/Content/sbadmin/metisMenu.css",
+                 "~/Content/font-awesome.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

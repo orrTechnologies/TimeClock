@@ -1,0 +1,49 @@
+﻿
+
+<div class="row">
+    <div class="col-sm-12">
+    <div class="panel-default">
+        <div class="panel-heading">
+            <span>Employee List</span>
+        </div>
+        <div class="table-responsive">
+            <table id="employee-table" class="table employee-table">
+                <thead>
+                <tr>
+                    <th>
+                        Full Name
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Time
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="employee in employees">
+                    <td>
+                        {{employee.fullName}}
+                    </td>
+                    <td>
+                        {{employee.status}}
+                    </td>
+                    <td>
+                        {{employee.lastPunchTime}}
+                    </td>
+                    <td>
+                        <button class="btn btn-clock" ng-click="changeClockStatus(employee)">
+                            <span class="glyphicon glyphicon-dashboard"></span>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>

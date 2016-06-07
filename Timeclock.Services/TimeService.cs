@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using TimeClock.Data;
 using TimeClock.Data.Models;
 
-
-namespace TimeClock.Web.Services
+namespace Timeclock.Services
 {
     public class TimeService : ITimeService
     {
@@ -22,7 +22,7 @@ namespace TimeClock.Web.Services
             _context.SaveChanges();
         }
 
-        public IEnumerable<TimePunch> GetPunchList(int employeeId, TimeClockSpan timeClockSpan)
+        public List<TimePunch> GetPunchList(int employeeId, TimeClockSpan timeClockSpan)
         {
             var punchList = _context.TimePunches.Where(t => t.EmployeeId == employeeId
                 && t.Time >= timeClockSpan._start && t.Time <= timeClockSpan._end).ToList();
@@ -33,6 +33,6 @@ namespace TimeClock.Web.Services
     public interface ITimeService
     {
         void AddTimePunch(Employee employee, TimePunch punch);
-        IEnumerable<TimePunch> GetPunchList(int employeeId, TimeClockSpan timeClockSpan);
+       List<TimePunch> GetPunchList(int employeeId, TimeClockSpan timeClockSpan);
     }
 }

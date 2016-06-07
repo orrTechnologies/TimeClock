@@ -64,6 +64,8 @@
     <Compile Include="Models\TimeSpan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TimeClockContext.cs" />
+    <Compile Include="TimeReport.cs" />
+    <Compile Include="TimeReportDaily.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

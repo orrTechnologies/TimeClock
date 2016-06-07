@@ -115,6 +115,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Timeclock.Services\Timeclock.Services.csproj">
+      <Project>{c20c68ff-56b0-47bc-8bcd-50dd40628c92}</Project>
+      <Name>Timeclock.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TimeClock.Web\TimeClock.Web.csproj">
       <Project>{90a0c33e-1ae0-4de7-85ce-c7a11b1511a2}</Project>
       <Name>TimeClock.Web</Name>

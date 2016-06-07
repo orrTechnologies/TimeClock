@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TimeClock.Data;
 using TimeClock.Data.Models;
 
 namespace TimeClock.Web.Models

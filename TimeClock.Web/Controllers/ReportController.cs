@@ -7,6 +7,8 @@ using System.Runtime.Remoting.Proxies;
 using System.Web;
 using System.Web.Compilation;
 using System.Web.Mvc;
+using Timeclock.Services;
+using TimeClock.Data;
 using TimeClock.Data.Models;
 using TimeClock.Web.Models;
 using TimeClock.Web.Services;
