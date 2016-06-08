@@ -39,7 +39,8 @@ namespace Timeclock.Api
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css",
-                "~/Content/bootstrap.css"));
+                "~/Content/bootstrap.css",
+                "~/Content/timeclock.css"));
 
             bundles.Add(new StyleBundle("~/Content/sbadmin").Include(
                 "~/Content/sbadmin/sb-admin-2.css",

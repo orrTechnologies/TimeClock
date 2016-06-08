@@ -25,9 +25,9 @@ namespace Timeclock.Api.Controllers
         }
 
         // GET api/employee
-        public IEnumerable<EmployeeViewModel> GetEmployees()
+        public IEnumerable<EmployeeBindingModel> GetEmployees()
         {
-            return _employeeService.GetEmployeeList().Select(e => new EmployeeViewModel()
+            return _employeeService.GetEmployeeList().Select(e => new EmployeeBindingModel()
             {
                 FirstName = e.FirstName,
                 LastName = e.LastName,
@@ -59,17 +59,22 @@ namespace Timeclock.Api.Controllers
         //}
         [AllowAnonymous]
         [Route("Clock/")]
-        public IHttpActionResult Clock([FromBody]int id, [FromBody]TimePunchStatus status)
+        public IHttpActionResult Clock(TimePunchBindingModel timePunchBindingModel)
         {
-            Employee employee = _employeeService.FindById(id);
+            Employee employee = _employeeService.FindById(timePunchBindingModel.Id);
             if (employee == null)
             {
-                return BadRequest(String.Format("Employee with {0} not found.", id));
+                return BadRequest(String.Format("Employee with {0} not found.", timePunchBindingModel.Id));
             }
-            _employeeService.ChangeClockStatus(employee, status);
 
-            _timeService.AddTimePunch(employee, new TimePunch((int)id, status, DateTime.Now));
-            return Ok();
+            //if changing the employees status was successfull and saved to database. 
+            if (_employeeService.ChangeClockStatus(employee, timePunchBindingModel.Status))
+            {
+                _timeService.AddTimePunch(employee,
+                    new TimePunch(timePunchBindingModel.Id, timePunchBindingModel.Status, DateTime.Now));
+                return Ok(employee);
+            }
+            return BadRequest();
         }
     }
 }

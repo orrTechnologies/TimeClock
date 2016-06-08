@@ -30,7 +30,8 @@
                         {{employee.fullName}}
                     </td>
                     <td>
-                        {{employee.status}}
+                        <div ng-show="employee.currentStatus == 0" class="punch-status  punched-in"></div>
+                        <div ng-hide="employee.currentStatus == 0" class="punch-status  punched-out"></div>
                     </td>
                     <td>
                         {{employee.lastPunchTime}}

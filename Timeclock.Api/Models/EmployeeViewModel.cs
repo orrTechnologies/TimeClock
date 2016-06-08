@@ -7,7 +7,7 @@ using TimeClock.Data.Models;
 
 namespace Timeclock.Api.Models
 {
-    public class EmployeeViewModel
+    public class EmployeeBindingModel
     {
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }
@@ -26,5 +26,11 @@ namespace Timeclock.Api.Models
                     "punched-in" : "punched-out";
             }
         }
+    }
+
+    public class TimePunchBindingModel
+    {
+        public int Id { get; set; }
+        public TimePunchStatus Status { get; set; }
     }
 }
