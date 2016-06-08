@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Mvc;
+using System.Web.Http.Results;
 using Timeclock.Api.Models;
 using Timeclock.Services;
 using TimeClock.Data.Models;
@@ -13,6 +12,7 @@ using TimeClock.Web.Services;
 
 namespace Timeclock.Api.Controllers
 {
+    [RoutePrefix("api/Employee")]
     public class EmployeeController : ApiController
     {
         private readonly IEmployeeService _employeeService;
@@ -25,7 +25,7 @@ namespace Timeclock.Api.Controllers
         }
 
         // GET api/employee
-        public IEnumerable<EmployeeViewModel> Get()
+        public IEnumerable<EmployeeViewModel> GetEmployees()
         {
             return _employeeService.GetEmployeeList().Select(e => new EmployeeViewModel()
             {
@@ -43,30 +43,33 @@ namespace Timeclock.Api.Controllers
             return "value";
         }
 
-        // POST api/employee
-        public void Post([FromBody]string value)
-        {
-        }
+        //// POST api/employee
+        //public void Post([FromBody]string value)
+        //{
+        //}
 
-        // PUT api/employee/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //// PUT api/employee/5
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
 
-        // DELETE api/employee/5
-        public void Delete(int id)
+        //// DELETE api/employee/5
+        //public void Delete(int id)
+        //{
+        //}
+        [AllowAnonymous]
+        [Route("Clock/")]
+        public IHttpActionResult Clock([FromBody]int id, [FromBody]TimePunchStatus status)
         {
-        }
-        public HttpResponseMessage Clock(int? id, TimePunchStatus status)
-        {
-            if (id != null)
+            Employee employee = _employeeService.FindById(id);
+            if (employee == null)
             {
-                Employee employee = _employeeService.FindById(id);
-                _employeeService.ChangeClockStatus(employee, status);
-
-                _timeService.AddTimePunch(employee, new TimePunch((int)id, status, DateTime.Now));
+                return BadRequest(String.Format("Employee with {0} not found.", id));
             }
-            return Request.CreateResponse(HttpStatusCode.Found, true);
+            _employeeService.ChangeClockStatus(employee, status);
+
+            _timeService.AddTimePunch(employee, new TimePunch((int)id, status, DateTime.Now));
+            return Ok();
         }
     }
 }

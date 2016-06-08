@@ -2,7 +2,7 @@
     $scope.employees = employeeRepository.get();
 
     $scope.changeClockStatus = function(employee) {
-        employeeRepository.changeClockStatus(employee.employeesId, 1)
+        employeeRepository.changeClockStatus(employee.employeeId, 1)
             .success(function() {
             console.log("success");
         });

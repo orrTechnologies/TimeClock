@@ -5,7 +5,8 @@
         },
 
         changeClockStatus: function (employeeId, timePunchStatus) {
-            return $http.post('/api/employee/clock', { id: employeeId, timePunchStatus: timePunchStatus }).promise;
+            this.employee = { id: employeeId, status: timePunchStatus }
+            return $http.post('/api/employee/clock', this.employee).promise;
         }
     }
 });
