@@ -13,10 +13,7 @@ namespace Timeclock.Api
                 "~/Scripts/angular-route.js",
                 "~/Scripts/angular-resource.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/timeclock").Include(
-            "~/app/app.js",
-            "~/app/employees/employee-controller.js",
-              "~/app/employees/employee-repository.js"));
+            bundles.Add(new ScriptBundle("~/bundles/timeclock").IncludeDirectory("~/app", "*.js", true));
 
             bundles.Add(new ScriptBundle("~/bundles/sbadmin")
                 .Include("~/Scripts/sb-admin-2.js",
@@ -32,7 +29,10 @@ namespace Timeclock.Api
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
-
+            bundles.Add(new ScriptBundle("~/bundles/momentjs").Include(
+                "~/Scripts/moment.js",
+                  "~/Scripts/moment-timezone-with-data-2010-2020.js",
+                  "~/Scripts/moment-timezone-utils.js"));
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

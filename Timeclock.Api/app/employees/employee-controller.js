@@ -1,12 +1,11 @@
-﻿timeClock.controller("EmployeeController", function ($scope, employeeRepository) {
-    $scope.employees = employeeRepository.get();
+﻿(function () {
+    timeClock.controller("EmployeeController", employeeController);
 
-    $scope.changeClockStatus = function (employee) {
-        var self = this;
-        employeeRepository.changeClockStatus(employee.employeeId, !employee.currentStatus)
-            .success(function (data, status, headers, config) {
-                self.employee.currentStatus = !self.employee.currentStatus;
-                self.employee.lastPunchTime = data.lastPunchTime;
-        });
+    function employeeController($scope) {
+
+        $scope.formatTime = function (dateTime) {
+            return moment(dateTime).format("hh:mm D/MM/YY");
+        }
+
     }
-});
+})();
