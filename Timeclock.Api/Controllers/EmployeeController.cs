@@ -25,6 +25,8 @@ namespace Timeclock.Api.Controllers
         }
 
         // GET api/employee
+        [Route("")]
+        [HttpGet]
         public IEnumerable<EmployeeBindingModel> GetEmployees()
         {
             return _employeeService.GetEmployeeList().Select(e => new EmployeeBindingModel()
@@ -57,8 +59,10 @@ namespace Timeclock.Api.Controllers
         //public void Delete(int id)
         //{
         //}
+
         [AllowAnonymous]
         [Route("Clock/")]
+        [HttpPost]
         public IHttpActionResult Clock(TimePunchBindingModel timePunchBindingModel)
         {
             Employee employee = _employeeService.FindById(timePunchBindingModel.Id);
