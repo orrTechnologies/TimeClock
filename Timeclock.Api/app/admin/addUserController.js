@@ -1,7 +1,7 @@
 ﻿(function () {
     timeClock.controller("AddUserController", addUserController);
 
-    function addUserController($scope, $location, employeeRepository) {
+    function addUserController($scope, $location, employeeRepository, statusMessageService) {
         $scope.hasError = false;
         $scope.employee = {
             firstName: "",
@@ -14,10 +14,11 @@
                 .success(function () {
                     this.hasError = false;
                     console.log("Employee successfully saved.");
+                    statusMessageService.add("Successfully added employee", 1);
                     $location.path('admin');
                 })
                 .error(function () {
-                    this.hasError = true;
+                statusMessageService.add("Failed to add employee", 4);
             });
         }
     }

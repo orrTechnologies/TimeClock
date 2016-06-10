@@ -211,6 +211,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\admin\addUserController.js" />
+    <Content Include="app\statusmessages\statusMessageController.js" />
+    <Content Include="app\statusmessages\statusMessageService.js" />
     <Content Include="templates\admin\addUser.html" />
     <Content Include="app\admin\adminPanelController.js" />
     <Content Include="app\app.js" />

@@ -371,8 +371,11 @@
         </nav>
     <div id="page-wrapper">
         <div class="row">
-            <div  class="col-lg-12">
-                
+            <div ng-controller="StatusMessageController" class="col-lg-12">
+                <div ng-repeat="statusMessage in messages" class="alert " ng-class="{'alert-success': statusMessage.severityLevel == 1, 'alert-info': statusMessage.severityLevel == 2, 'alert-warning': statusMessage.severityLevel == 3, 'alert-danger': statusMessage.severityLevel == 4}">
+                    <button type="button" class="close" ng-click="remove(statusMessage)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{statusMessage.messageText}}
+                </div>
             </div>
         </div>
         <div class="row">
