@@ -80,5 +80,22 @@ namespace Timeclock.Api.Controllers
             }
             return BadRequest();
         }
+
+        public IHttpActionResult Add(EmployeeAddBindingMdoel addBm)
+        {
+            if (ModelState.IsValid)
+            {
+                var employee = new Employee()
+                {
+                    FirstName = addBm.FirstName,
+                    LastName = addBm.LastName,
+                    LastPunchTime = DateTime.Now
+                };
+                _employeeService.CreateEmployee(employee);
+                return Ok();
+            }
+
+            return BadRequest(ModelState);
+        }
     }
 }

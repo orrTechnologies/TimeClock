@@ -28,6 +28,12 @@ namespace Timeclock.Api.Models
         }
     }
 
+    public class EmployeeAddBindingMdoel
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+    }
+
     public class TimePunchBindingModel
     {
         public int Id { get; set; }

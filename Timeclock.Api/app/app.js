@@ -1,8 +1,12 @@
 ﻿var timeClock = angular.module('timeClock', ['ngRoute', 'ngResource'])
         .config(function ($routeProvider, $locationProvider) {
     $routeProvider.when('/admin', {
-        templateUrl: '/templates/adminPanel.html',
+        templateUrl: '/templates/admin/adminPanel.html',
         controller: 'AdminPanelController'
+    });
+    $routeProvider.when('/admin/addUser', {
+        templateUrl: '/templates/admin/addUser.html',
+        controller: 'AddUserController'
     });
         $routeProvider.otherwise({ templateUrl: '/templates/employees.html', controller: 'EmployeeListController' });
     });
