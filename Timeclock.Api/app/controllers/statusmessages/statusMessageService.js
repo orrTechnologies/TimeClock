@@ -2,7 +2,7 @@
     timeClock.service('statusMessageService', function () {
 
         return {
-            messages: [{ messageText: "test", severityLevel: 4 }],
+            messages: [],
 
             get: function (clear) {
                 var returnMessages = this.messages.slice(0);
