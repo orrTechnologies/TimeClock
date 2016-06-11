@@ -1,4 +1,9 @@
-﻿/********* Employee Index **********/
+﻿/***** StatusMessageContainer ******/
+.status-message-list {
+    padding-left: 0px;
+    list-style-type: none;
+}
+/********* Employee Index **********/
 .punch-status {
     width: 15px;
     height: 15px;
