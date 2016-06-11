@@ -212,7 +212,7 @@
   <ItemGroup>
     <Content Include="app\controllers\admin\addUserController.js" />
     <Content Include="app\controllers\admin\userManagerController.js" />
-    <Content Include="app\directives\statusMessageContainer.js" />
+    <Content Include="app\directives\statusMessageDirective.js" />
     <Content Include="templates\admin\employeeManager.html" />
     <Content Include="app\controllers\statusmessages\statusMessageController.js" />
     <Content Include="app\controllers\statusmessages\statusMessageService.js" />
@@ -363,7 +363,7 @@
     <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="templates\admin\adminPanel.html" />
     <Content Include="templates\employees.html" />
-    <Content Include="templates\statusMessage\statusMessageContainer.html" />
+    <Content Include="templates\statusMessage\statusMessage.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

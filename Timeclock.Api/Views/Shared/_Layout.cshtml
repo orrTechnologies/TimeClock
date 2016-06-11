@@ -371,8 +371,15 @@
         </nav>
     <div id="page-wrapper">
         <div class="row">
-            <div class="col-lg-12">
-                <status-message-container messages="messages" />
+            <div ng-controller="StatusMessageController" class="col-lg-12">
+                <div ng-repeat="statusMessage in messages">
+                    <ul>
+                        <li>
+                            <status-message message="statusMessage" remove="remove(statusMessage)" />   
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
