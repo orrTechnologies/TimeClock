@@ -1,0 +1,6 @@
+﻿<div>
+    <div ng-repeat="statusMessage in messages" class="alert " ng-class="{'alert-success': statusMessage.severityLevel == 1, 'alert-info': statusMessage.severityLevel == 2, 'alert-warning': statusMessage.severityLevel == 3, 'alert-danger': statusMessage.severityLevel == 4}">
+        <button type="button" class="close" ng-click="remove(statusMessage)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{statusMessage.messageText}}
+    </div>
+</div>

@@ -4,6 +4,10 @@
         templateUrl: '/templates/admin/adminPanel.html',
         controller: 'AdminPanelController'
     });
+    $routeProvider.when('/admin/userManager', {
+        templateUrl: '/templates/admin/userManager.html',
+        controller: 'userManagerController'
+    });
     $routeProvider.when('/admin/addUser', {
         templateUrl: '/templates/admin/addUser.html',
         controller: 'AddUserController'

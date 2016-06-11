@@ -210,16 +210,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\admin\addUserController.js" />
-    <Content Include="app\statusmessages\statusMessageController.js" />
-    <Content Include="app\statusmessages\statusMessageService.js" />
+    <Content Include="app\controllers\admin\addUserController.js" />
+    <Content Include="app\controllers\admin\userManagerController.js" />
+    <Content Include="app\directives\statusMessageContainer.js" />
+    <Content Include="templates\admin\employeeManager.html" />
+    <Content Include="app\controllers\statusmessages\statusMessageController.js" />
+    <Content Include="app\controllers\statusmessages\statusMessageService.js" />
     <Content Include="templates\admin\addUser.html" />
-    <Content Include="app\admin\adminPanelController.js" />
+    <Content Include="app\controllers\admin\adminPanelController.js" />
     <Content Include="app\app.js" />
     <Content Include="app\employeeCtrl.js" />
-    <Content Include="app\employees\employee-controller.js" />
-    <Content Include="app\employees\employee-list-controller.js" />
-    <Content Include="app\employees\employee-repository.js" />
+    <Content Include="app\controllers\employees\employee-controller.js" />
+    <Content Include="app\controllers\employees\employee-list-controller.js" />
+    <Content Include="app\controllers\employees\employee-repository.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-slate.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -360,6 +363,7 @@
     <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="templates\admin\adminPanel.html" />
     <Content Include="templates\employees.html" />
+    <Content Include="templates\statusMessage\statusMessageContainer.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

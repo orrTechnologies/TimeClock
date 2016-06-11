@@ -1,0 +1,43 @@
+﻿
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel-default">
+            <div class="panel-heading">
+                <span>Employee List</span>
+            </div>
+            <button class="btn btn-default" ng-click="delete(employee)">
+                <span class="glyphicon glyphicon-user">New Employee</span>
+            </button>
+            <div class="table-responsive">
+                <table id="employee-table" class="table employee-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Full Name
+                            </th>
+                            <th>
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="employee in employees">
+                            <td>
+                                {{employee.fullName}}
+                            </td>
+                            <td>
+                                <button class="btn btn-default" ng-click="edit(employee)">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                </button>
+                                <button class="btn btn-default" ng-click="delete(employee)">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
