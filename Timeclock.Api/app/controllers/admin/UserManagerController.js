@@ -1,38 +1,31 @@
 ﻿(function() {
-    timeClock.controller("EmployeeListController", employeeListController);
+    timeClock.controller("UserManagerController", userManagerController);
 
-    function employeeListController($scope, employeeRepository, statusMessageService) {
+    function userManagerController($scope, $location, employeeRepository, $uibModal, statusMessageService) {
         $scope.employees = employeeRepository.get();
 
-        $scope.hasError = false;
-        $scope.newEmployee = {
-            firstName: "",
-            lastName: ""
-        };
-        $scope.changeClockStatus = function(employee) {
-            var self = this;
-            employeeRepository.changeClockStatus(employee.employeeId, !employee.currentStatus)
-                .success(function(data, status, headers, config) {
-                    self.employee.currentStatus = !self.employee.currentStatus;
-                    self.employee.lastPunchTime = data.lastPunchTime;
-                });
+
+        $scope.add = function () {
+            $location.url('/admin/addUser');
         }
 
-        $scope.save = function () {
-            console.log(this.newEmployee);
-            employeeRepository.saveNewEmployee(this.newEmployee)
-                .success(function () {
-                    this.hasError = false;
-                    console.log("Employee successfully saved.");
-                    statusMessageService.add("Successfully added employee", 1);
-                    $location.path('admin');
-                })
-                .error(function () {
-                    statusMessageService.add("Failed to add employee", 4);
-                });
-        }
-        $scope.formatTime = function (dateTime) {
-            return moment(dateTime).format("hh:mm A - D/MM/YY");
+        $scope.delete = function(employee) {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: '/templates/admin/employeeManager/deleteEmployeeModal.html',
+                controller: 'DeleteUserModalController',
+                resolve: {
+                    employee: function() {
+                        return employee;
+                    }
+                }
+            });
+            modalInstance.result.then(function (employee) {
+                var index = this.employees.indexOf(employee);
+                if (index > -1) {
+                    this.employees.splice(index, 1);
+                }
+            }.bind(this));
         }
     }
 })();

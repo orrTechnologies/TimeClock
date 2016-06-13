@@ -211,9 +211,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\controllers\admin\addUserController.js" />
+    <Content Include="app\controllers\admin\deleteUserModalController.js" />
     <Content Include="app\controllers\admin\userManagerController.js" />
     <Content Include="app\directives\statusMessageDirective.js" />
-    <Content Include="templates\admin\employeeManager.html" />
+    <Content Include="Scripts\ui-bootstrap-tpls-1.3.3-min.js" />
+    <Content Include="templates\admin\employeeManager\deleteEmployeeModal.html" />
+    <Content Include="templates\admin\employeeManager\employeeManager.html" />
     <Content Include="app\controllers\statusmessages\statusMessageController.js" />
     <Content Include="app\controllers\statusmessages\statusMessageService.js" />
     <Content Include="templates\admin\addUser.html" />
@@ -324,6 +327,7 @@
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Scripts\ui-bootstrap-tpls-1.3.3.js" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-resource.min.js" />

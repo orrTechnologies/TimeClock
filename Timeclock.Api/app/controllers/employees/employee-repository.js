@@ -13,6 +13,10 @@
 
             saveNewEmployee: function(employee) {
                 return $http.post('/api/employee/add', employee);
+            },
+
+            deleteEmployee: function(employee) {
+                return $http.delete('/api/employee/Delete/' + employee.employeeId);
             }
         }
     });

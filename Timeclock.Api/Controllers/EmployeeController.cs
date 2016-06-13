@@ -55,10 +55,21 @@ namespace Timeclock.Api.Controllers
         //{
         //}
 
-        //// DELETE api/employee/5
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/employee/5       
+        [AllowAnonymous]
+        [Route("Delete/{id}")]
+        [HttpDelete]
+        public IHttpActionResult Delete([FromUri] int id)
+        {
+            Employee employee = _employeeService.FindById(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+            _employeeService.DeleteEmployee(employee);
+
+            return Ok();
+        }
 
         [AllowAnonymous]
         [Route("Clock/")]

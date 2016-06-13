@@ -15,7 +15,7 @@
                     this.hasError = false;
                     console.log("Employee successfully saved.");
                     statusMessageService.add("Successfully added employee", 1);
-                    $location.path('admin');
+                    $location.path('admin/userManager');
                 })
                 .error(function () {
                 statusMessageService.add("Failed to add employee", 4);

@@ -1,12 +1,12 @@
 ﻿
 
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-md-10 col-md-push-1">
         <div class="panel-default">
             <div class="panel-heading">
                 <span>Employee List</span>
             </div>
-            <button class="btn btn-default" ng-click="delete(employee)">
+            <button class="btn btn-default" ng-click="add(employee)">
                 <span class="glyphicon glyphicon-user">New Employee</span>
             </button>
             <div class="table-responsive">
@@ -31,7 +31,7 @@
                                     <span class="glyphicon glyphicon-edit"></span>
                                 </button>
                                 <button class="btn btn-default" ng-click="delete(employee)">
-                                    <span class="glyphicon glyphicon-edit"></span>
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
                                 </button>
                             </td>
                         </tr>
