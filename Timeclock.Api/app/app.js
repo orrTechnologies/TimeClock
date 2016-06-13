@@ -12,5 +12,9 @@
         templateUrl: '/templates/admin/employeeManager/addUser.html',
         controller: 'AddUserController'
     });
+    $routeProvider.when('/admin/editUser/:id', {
+        templateUrl: '/templates/admin/employeeManager/addUser.html',
+        controller: 'EditUserController'
+    });
         $routeProvider.otherwise({ templateUrl: '/templates/employees.html', controller: 'EmployeeListController' });
     });

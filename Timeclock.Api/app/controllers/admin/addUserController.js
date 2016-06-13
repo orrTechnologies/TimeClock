@@ -3,6 +3,7 @@
 
     function addUserController($scope, $location, employeeRepository, statusMessageService) {
         $scope.hasError = false;
+
         $scope.employee = {
             firstName: "",
             lastName: ""

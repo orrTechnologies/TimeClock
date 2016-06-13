@@ -8,7 +8,9 @@
         $scope.add = function () {
             $location.url('/admin/addUser');
         }
-
+        $scope.edit = function(employee) {
+            $location.url('/admin/editUser/' + employee.employeeId);
+        }
         $scope.delete = function(employee) {
             var modalInstance = $uibModal.open({
                 animation: true,

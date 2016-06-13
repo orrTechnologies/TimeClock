@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -38,11 +39,20 @@ namespace Timeclock.Api.Controllers
                 CurrentStatus = e.CurrentStatus
             });
         }
-
+        [Route("Load/{id}")]
+        [HttpGet]
         // GET api/employee/5
-        public string Get(int id)
+        public EmployeeBindingModel Get([FromUri] int id)
         {
-            return "value";
+            Employee employee = _employeeService.FindById(id);
+            return new EmployeeBindingModel
+            {
+                FirstName = employee.FirstName,
+                LastName = employee.LastName,
+                EmployeeId = employee.EmployeeId,
+                LastPunchTime = employee.LastPunchTime,
+                CurrentStatus = employee.CurrentStatus
+            };
         }
 
         //// POST api/employee
@@ -79,7 +89,7 @@ namespace Timeclock.Api.Controllers
             Employee employee = _employeeService.FindById(timePunchBindingModel.Id);
             if (employee == null)
             {
-                return BadRequest(String.Format("Employee with {0} not found.", timePunchBindingModel.Id));
+                return NotFound();
             }
 
             //if changing the employees status was successfull and saved to database. 
@@ -103,6 +113,27 @@ namespace Timeclock.Api.Controllers
                     LastPunchTime = DateTime.Now
                 };
                 _employeeService.CreateEmployee(employee);
+                return Ok();
+            }
+
+            return BadRequest(ModelState);
+        }
+        [AllowAnonymous]
+        [Route("Edit/")]
+        [HttpPost]
+        public IHttpActionResult Edit(EmployeeEditBindingModal editBindingModal)
+        {
+            Employee employee = _employeeService.FindById(editBindingModal.EmployeeId);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                employee.FirstName = editBindingModal.FirstName;
+                employee.LastName = editBindingModal.LastName;
+
+                _employeeService.UpdateEmployee(employee);
                 return Ok();
             }
 

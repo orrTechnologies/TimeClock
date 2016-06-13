@@ -33,7 +33,12 @@ namespace Timeclock.Api.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
     }
-
+    public class EmployeeEditBindingModal
+    {
+        public int EmployeeId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+    }
     public class TimePunchBindingModel
     {
         public int Id { get; set; }
