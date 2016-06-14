@@ -21,12 +21,11 @@ namespace Timeclock.Api.Controllers
             return "true";
 
         }
-        [Route("Test/{ids}/{startTime}/{endTime}")]
-        [HttpGet]
-        public string Test(string ids, string startTime, string endTime)
+        [Route("Test/")]
+        [HttpPost]
+        public string Test(ReportRequest request)
         {
-            var start = DateTime.Parse(startTime);
-            return "true";
+            return request.StartTime.ToString();
 
         }
     }

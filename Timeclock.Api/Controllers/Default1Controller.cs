@@ -7,33 +7,14 @@ using System.Web.Http;
 
 namespace Timeclock.Api.Controllers
 {
-    public class Default1Controller : ApiController
+    public class TaskList
     {
-        // GET api/default1
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/default1/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/default1
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/default1/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/default1/5
-        public void Delete(int id)
-        {
-        }
+        // TODO: Be able to view time reports. 
+        //TODO: Optional pin number for employees to clock in and out.
+        //TODO: Offices and groups. 
+        //TODO: Reports selection should use ajax for office group employees selection. 
+        //TODO: Sortable employee tables.
+        //TODO: Admin panel - overview, employees clockin and out 
+        //TODO: Record employees who are late - display list of late employees in admin overview. 
     }
 }
