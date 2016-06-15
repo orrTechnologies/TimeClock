@@ -10,7 +10,7 @@
         var init = function() {
            employeeRepository.get().$promise.then(function (employees) {
                employees.forEach(function (employee) {
-                    $scope.employeeList.push(employee.employeeId);
+                    $scope.employeeList.push(employee);
                 });
             });
         }
