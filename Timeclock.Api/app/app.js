@@ -17,8 +17,8 @@
         controller: 'EditUserController'
     });
     $routeProvider.when('/admin/reports/', {
-        templateUrl: '/templates/admin/reports/reportsSelection.html',
-        controller: 'ReportsController'
+        templateUrl: '/templates/admin/reports/timeWorkedReport.html',
+        controller: 'TimeWorkedReportController'
     });
         $routeProvider.otherwise({ templateUrl: '/templates/employees.html', controller: 'EmployeeListController' });
     });

@@ -11,7 +11,7 @@ namespace TimeClock.Web.Models
     public class ReportRequest
     {
         [Required]
-        public string EmployeeIds { get; set; }
+        public int[] EmployeeIds { get; set; }
         [Required]
         [Display(Name = "Start Time")]
         public DateTime StartTime { get; set; }

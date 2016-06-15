@@ -9,7 +9,7 @@ namespace TimeClock.Web.Models
     public interface ITimeReport
     {
         Employee Employee { get; }
-        IEnumerable<TimeReportDaily> DailyReports();
+        IEnumerable<TimeReportDaily> DailyReports { get; }
         double TimeWorked { get; }
     }
 
@@ -19,6 +19,12 @@ namespace TimeClock.Web.Models
         public  Employee Employee { get; private set; }
         private  IEnumerable<TimePunch> _timePunches;
         private double _totalTimeWorked = -1;
+        public TimeReport(Employee employee, IEnumerable<TimePunch> timePunches)
+        {
+            Employee = employee;
+            _timePunches = timePunches;
+        }
+
         //Cache the result. 
         public double TimeWorked
         {
@@ -32,22 +38,19 @@ namespace TimeClock.Web.Models
             }
         }
 
-        public TimeReport(Employee employee, IEnumerable<TimePunch> timePunches)
+        public IEnumerable<TimeReportDaily> DailyReports
         {
-            Employee = employee;
-            _timePunches = timePunches;
-        }
-
-        public IEnumerable<TimeReportDaily> DailyReports()
-        {
-            var timePunchByDay = _timePunches.GroupBy(t => t.Time.Date);
-            var dailyReports = timePunchByDay.Select(t => new TimeReportDaily()
+            get
             {
-                Date = t.Key,
-                TimePunches = t.ToList()
-            });
+                var timePunchByDay = _timePunches.GroupBy(t => t.Time.Date);
+                var dailyReports = timePunchByDay.Select(t => new TimeReportDaily()
+                {
+                    Date = t.Key,
+                    TimePunches = t.ToList()
+                });
 
-            return dailyReports.ToList();
+                return dailyReports.ToList();
+            }
         }
 
         private double CalculateTotalHoursWorked()

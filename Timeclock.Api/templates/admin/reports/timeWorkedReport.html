@@ -1,0 +1,74 @@
+﻿<div class="row">
+    <h2>Time Reports</h2>
+    <div class="col-sm-12 col-lg-6">
+        <div ng-show="timeReports == 0" class="panel panel-default">
+            <div class="panel-heading">
+                <span>Report Options</span>
+            </div>
+            <div class="panel-body">
+                <form name="reportSelectionForm">
+                    <fieldset class="form-group">
+                        <label>Select Employees: </label>
+                        <select class="form-control" multiple ng-model="selectedIds">
+                            <option ng-repeat="employee in employeeList" value="{{employee.employeeId}}">{{employee.firstName}} {{employee.lastName}}</option>
+                        </select>
+                    </fieldset>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <fieldset class="form-group">
+                                <label class="control-label">Start Date: </label>
+                                <uib-datepicker ng-model="startTime" datepicker-options="startDateOptions" ng-change="startTimeChanged(startTime)"></uib-datepicker>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-6">
+                            <fieldset class="form-group">
+                                <label class="control-label">End Date: </label>
+                                <uib-datepicker ng-model="endTime" datepicker-options="endDateOptions" ng-change="endTimeChanged(endTime)"></uib-datepicker>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <button ng-disabled="" ng-click="submit()" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div ng-show="timeReports.length > 0">
+            <div ng-repeat="report in timeReports" class="panel  panel-default">
+                <div class="panel-heading">
+                    <span>{{report.employee.firstName}} {{report.employee.lastName}}</span>
+                </div>
+                <div class="panel-body">
+                    <div ng-repeat="dayReport in report.dailyReports">
+                        <span>{{dayReport.date}}</span>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <th>
+                                        Time
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="timePunch in dayReport.timePunches">
+                                    <td>
+                                        <div ng-show="timePunch.status == 0" class="punch-status  punched-in"></div>
+                                        <div ng-hide="timePunch.status == 0" class="punch-status  punched-out"></div>
+                                    </td>
+                                    <td>
+                                        {{timePunch.time}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="time-report-footer">
+                        <strong><span>Total: {{report.timeWorked}}</span></strong>
+                    </div>
+                </div>
+            </div>
+            <button ng-click="back()" class="btn btn-primary">Back</button>
+        </div>
+    </div>
+</div>

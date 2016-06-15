@@ -225,7 +225,8 @@
     <Content Include="app\controllers\admin\addUserController.js" />
     <Content Include="app\controllers\admin\deleteUserModalController.js" />
     <Content Include="app\controllers\admin\EditUserController.js" />
-    <Content Include="app\controllers\admin\reports\reportsController.js" />
+    <Content Include="app\controllers\admin\reports\timeWorkedReportController.js" />
+    <Content Include="app\controllers\admin\reports\reportsRepository.js" />
     <Content Include="app\controllers\admin\userManagerController.js" />
     <Content Include="app\directives\statusMessageDirective.js" />
     <Content Include="Model1.Context.tt">
@@ -387,7 +388,8 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="templates\admin\adminPanel.html" />
-    <Content Include="templates\admin\reports\reportsSelection.html" />
+    <Content Include="templates\admin\reports\timeWorkedReport.html" />
+    <Content Include="templates\admin\reports\timeReport.html" />
     <Content Include="templates\employees.html" />
     <Content Include="templates\statusMessage\statusMessage.html" />
     <Content Include="Web.config" />
