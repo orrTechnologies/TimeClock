@@ -12,7 +12,7 @@
 
         $scope.timeReports = [];
         var init = function() {
-           employeeRepository.get().$promise.then(function (employees) {
+           employeeRepository.get().success(function (employees) {
                employees.forEach(function (employee) {
                     $scope.employeeList.push(employee);
                 });

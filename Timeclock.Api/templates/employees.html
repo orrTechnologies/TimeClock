@@ -13,14 +13,14 @@
                     <td data-title="'FullName'" filter="{ fullName: 'text'}" sortable="'fullName'">
                         {{employee.fullName}}
                     </td>
-                    <td data-title="'Status'" sortable="status">
+                    <td data-title="'Status'" sortable="'currentStatus'">
                         <div ng-show="employee.currentStatus == 0" class="punch-status  punched-in"></div>
                         <div ng-hide="employee.currentStatus == 0" class="punch-status  punched-out"></div>
                     </td>
                     <td data-title="'Time'">
                         {{formatTime(employee.lastPunchTime)}}
                     </td>
-                    <td>
+                    <td data-title="'Actions'">
                         <button class="btn btn-clock" ng-click="changeClockStatus(employee)">
                             <span class="glyphicon glyphicon-dashboard"></span>
                         </button>
