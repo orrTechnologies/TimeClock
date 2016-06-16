@@ -1,7 +1,18 @@
-﻿/***** StatusMessageContainer ******/
+﻿/****** Layout **************/
+.body-wrapper {
+    margin-top: 10px;
+}
+/***** StatusMessageContainer ******/
 .status-message-list {
     padding-left: 0px;
     list-style-type: none;
+}
+
+/**** Panels */
+.panel {
+-webkit-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.75);
 }
 /********* Employee Index **********/
 .punch-status {
