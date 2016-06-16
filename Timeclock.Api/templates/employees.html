@@ -7,33 +7,17 @@
             <span>Employee List</span>
         </div>
         <div class="table-responsive">
-            <table id="employee-table" class="table employee-table">
-                <thead>
-                <tr>
-                    <th>
-                        Full Name
-                    </th>
-                    <th>
-                        Status
-                    </th>
-                    <th>
-                        Time
-                    </th>
-                    <th>
-                        Actions
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="employee in employees">
-                    <td>
+            <table ng-table="tableParams" id="employee-table" class="table employee-table">
+
+                <tr ng-repeat="employee in $data">
+                    <td data-title="'FullName'" filter="{ fullName: 'text'}" sortable="'fullName'">
                         {{employee.fullName}}
                     </td>
-                    <td>
+                    <td data-title="'Status'" sortable="status">
                         <div ng-show="employee.currentStatus == 0" class="punch-status  punched-in"></div>
                         <div ng-hide="employee.currentStatus == 0" class="punch-status  punched-out"></div>
                     </td>
-                    <td>
+                    <td data-title="'Time'">
                         {{formatTime(employee.lastPunchTime)}}
                     </td>
                     <td>
@@ -42,7 +26,6 @@
                         </button>
                     </td>
                 </tr>
-                </tbody>
             </table>
         </div>
     </div>

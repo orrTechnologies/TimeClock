@@ -1,4 +1,4 @@
-﻿var timeClock = angular.module('timeClock', ['ngRoute', 'ngResource', 'ui.bootstrap'])
+﻿var timeClock = angular.module('timeClock', ['ngRoute', 'ngResource', 'ui.bootstrap', "ngTable"])
         .config(function ($routeProvider, $locationProvider) {
     $routeProvider.when('/admin', {
         templateUrl: '/templates/admin/adminPanel.html',

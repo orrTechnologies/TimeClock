@@ -9,7 +9,6 @@ namespace Timeclock.Api.Controllers
 {
     public class TaskList
     {
-        // TODO: Be able to view time reports. 
         //TODO: Optional pin number for employees to clock in and out.
         //TODO: Offices and groups. 
         //TODO: Reports selection should use ajax for office group employees selection. 

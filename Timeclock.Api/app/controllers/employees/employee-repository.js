@@ -3,7 +3,7 @@
 
         return {
             get: function() {
-                return $resource('/api/employee/').query();
+                return $http.get('/api/employee/');
             },
 
             changeClockStatus: function(employeeId, timePunchStatus) {

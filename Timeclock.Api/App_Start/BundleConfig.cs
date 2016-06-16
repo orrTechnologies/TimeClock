@@ -12,7 +12,8 @@ namespace Timeclock.Api
                 "~/Scripts/angular.js",
                 "~/Scripts/angular-route.js",
                 "~/Scripts/angular-resource.js",
-                "~/Scripts/ui-bootstrap-tpls-1.3.3.js"));
+                "~/Scripts/ui-bootstrap-tpls-1.3.3.js",
+                "~/Scripts/ng-table.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/timeclock").IncludeDirectory("~/app", "*.js", true));
 
@@ -46,6 +47,7 @@ namespace Timeclock.Api
             bundles.Add(new StyleBundle("~/Content/sbadmin").Include(
                 "~/Content/sbadmin/sb-admin-2.css",
                 "~/Content/sbadmin/metisMenu.css",
+                "~/Content/sbadmin/ng-table.css",
                  "~/Content/font-awesome.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(

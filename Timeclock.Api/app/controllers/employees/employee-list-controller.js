@@ -1,8 +1,19 @@
 ﻿(function() {
     timeClock.controller("EmployeeListController", employeeListController);
 
-    function employeeListController($scope, employeeRepository) {
-        $scope.employees = employeeRepository.get();
+    function employeeListController($scope, employeeRepository, NgTableParams) {
+        var self = this;
+
+        $scope.employees = [];
+        self.tableParams = new NgTableParams({}, {});
+
+        var init = function() {
+            employeeRepository.get().success(function(data) {
+                $scope.employees = data;
+                $scope.tableParams = new NgTableParams({}, {dataset: data});
+            });
+
+        }
 
         $scope.changeClockStatus = function(employee) {
             var self = this;
@@ -16,5 +27,7 @@
         $scope.formatTime = function (dateTime) {
             return moment(dateTime).format("hh:mm A - D/MM/YY");
         }
+
+        init();
     }
 })();

@@ -2,8 +2,13 @@
     timeClock.controller("UserManagerController", userManagerController);
 
     function userManagerController($scope, $location, employeeRepository, $uibModal, statusMessageService) {
-        $scope.employees = employeeRepository.get();
+        $scope.employees = [];
 
+        var init = function() {
+            employeeRepository.get().success(function(data) {
+                $scope.employees = data;
+            });
+        }
 
         $scope.add = function () {
             $location.url('/admin/addUser');
@@ -29,5 +34,7 @@
                 }
             }.bind(this));
         }
+
+        init();
     }
 })();
