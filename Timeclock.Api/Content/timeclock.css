@@ -10,18 +10,44 @@
 
 /**** Panels */
 .panel {
--webkit-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.75);
-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.75);
+  
 }
 /********* Employee Index **********/
 .punch-status {
     width: 15px;
     height: 15px;
     margin-left: 15px;
-        -webkit-box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.75);
-box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.75);
+}
+
+/***** Admin Panel **********/
+.admin-panel-option {
+    list-style-type: none;
+}
+.admin-panel-option a {
+    width: 120px;
+    display: block;
+}
+.admin-panel-option a:hover {
+    background-color: #ffffff;
+}
+.admin-panel-option-group .admin-panel-option {
+        float: left;
+} 
+.option-wrapper {
+    text-align: center;
+    margin: 0 auto;
+}
+.option-wrapper i {
+        font-size: 35px;
+        line-height: 60px;
+        color: #fff;
+        width: 65px;
+        height: 65px;
+        background-color: #82A3A8;
+        border-radius: 50%;
 }
 
 .punched-in {
