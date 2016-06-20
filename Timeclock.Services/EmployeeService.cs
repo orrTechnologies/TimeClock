@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Timeclock.Services;
 using TimeClock.Data;
 using TimeClock.Data.Models;
 
@@ -28,16 +29,30 @@ namespace TimeClock.Web.Services
             _context.SaveChanges();
         }
 
-        public bool ChangeClockStatus(Employee employee, TimePunchStatus status)
+        public bool ChangeClockStatus(TimePunchRequest request)
         {
-            //Can not change status to current status. 
-            if (employee.CurrentStatus == status) return false;
+            Employee employee = FindById(request.EmployeeId);
+            if (employee == null) { return false; }
 
+            //Can not change status to current status. 
+            if (employee.CurrentStatus == request.Status) return false;
+
+            //Check PIN Number If pin exist and pin does not match employee pin
+
+            if (employee.HasPin())
+            {
+                //No Pin sent in request or the pin that was sent does not match.
+                if (request.PIN == null || !employee.CheckPIN((int) request.PIN))
+                {
+                    return false;
+                }
+            }
             //Clock the employee out, and save. 
-            employee.CurrentStatus = status;
+            employee.CurrentStatus = request.Status;
             UpdateEmployee(employee);
 
             return true;
+
         }
 
         public List<Employee> GetEmployeeList()

@@ -30,14 +30,7 @@ namespace Timeclock.Api.Controllers
         [HttpGet]
         public IEnumerable<EmployeeBindingModel> GetEmployees()
         {
-            return _employeeService.GetEmployeeList().Select(e => new EmployeeBindingModel()
-            {
-                FirstName = e.FirstName,
-                LastName = e.LastName,
-                EmployeeId = e.EmployeeId,
-                LastPunchTime = e.LastPunchTime,
-                CurrentStatus = e.CurrentStatus
-            });
+            return _employeeService.GetEmployeeList().Select(MapEmployeeToBindingModel);
         }
         [Route("Load/{id}")]
         [HttpGet]
@@ -45,13 +38,19 @@ namespace Timeclock.Api.Controllers
         public EmployeeBindingModel Get([FromUri] int id)
         {
             Employee employee = _employeeService.FindById(id);
+            return MapEmployeeToBindingModel(employee);
+        }
+
+        private EmployeeBindingModel MapEmployeeToBindingModel(Employee employee)
+        {
             return new EmployeeBindingModel
             {
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
                 EmployeeId = employee.EmployeeId,
                 LastPunchTime = employee.LastPunchTime,
-                CurrentStatus = employee.CurrentStatus
+                CurrentStatus = employee.CurrentStatus,
+                RequiresAuthentication = employee.HasPin()
             };
         }
 
@@ -92,8 +91,15 @@ namespace Timeclock.Api.Controllers
                 return NotFound();
             }
 
+            TimePunchRequest request = new TimePunchRequest(timePunchBindingModel.Id, timePunchBindingModel.Status);
+            if (timePunchBindingModel.PIN != null)
+            {
+                request.PIN = timePunchBindingModel.PIN;
+            }
+
+
             //if changing the employees status was successfull and saved to database. 
-            if (_employeeService.ChangeClockStatus(employee, timePunchBindingModel.Status))
+            if (_employeeService.ChangeClockStatus(request))
             {
                 _timeService.AddTimePunch(employee,
                     new TimePunch(timePunchBindingModel.Id, timePunchBindingModel.Status, DateTime.Now));

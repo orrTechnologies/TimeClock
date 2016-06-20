@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Timeclock.Services;
 using TimeClock.Data.Models;
 
 namespace TimeClock.Web.Services
@@ -8,7 +9,7 @@ namespace TimeClock.Web.Services
         List<Employee> GetEmployeeList();
         List<Employee> FindByStatus(TimePunchStatus status); 
         void CreateEmployee(Employee employee);
-        bool ChangeClockStatus(Employee employee, TimePunchStatus status);
+        bool ChangeClockStatus(TimePunchRequest timePunch);
 
         Employee FindById(int? id);
         void UpdateEmployee(Employee employee);

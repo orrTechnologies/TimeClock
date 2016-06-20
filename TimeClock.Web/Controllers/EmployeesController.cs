@@ -55,7 +55,7 @@ namespace TimeClock.Web.Controllers
             {
                 return HttpNotFound();
             }
-            IEnumerable<TimePunch> TimePunches = _timeService.GetPunchList(employee.EmployeeId, new TimeClockSpan( DateTime.Now.AddDays(-7),
+            IEnumerable<TimePunchRequest> TimePunches = _timeService.GetPunchList(employee.EmployeeId, new TimeClockSpan( DateTime.Now.AddDays(-7),
                 DateTime.Now));
             View().ViewBag.TimePunches = TimePunches;
             return View(employee);
@@ -126,7 +126,7 @@ namespace TimeClock.Web.Controllers
                 Employee employee = _employeeService.FindById(id);
                 _employeeService.ChangeClockStatus(employee, status);
 
-                _timeService.AddTimePunch(employee, new TimePunch((int)id, status, DateTime.Now));
+                _timeService.AddTimePunch(employee, new TimePunchRequest((int)id, status, DateTime.Now));
             }
             return new RedirectResult(Request.UrlReferrer.AbsoluteUri);
         }

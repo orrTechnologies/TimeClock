@@ -15,11 +15,11 @@ namespace WebApplication1.Tests
     [TestClass]
     public class TimeServiceTest
     {
-        internal static ITimeService CreateService(Mock<TimeClockContext> context = null, Mock <DbSet<TimePunch>> punchListDbSet = null,
-            List<TimePunch> timePunchData = null )
+        internal static ITimeService CreateService(Mock<TimeClockContext> context = null, Mock <DbSet<TimePunchRequest>> punchListDbSet = null,
+            List<TimePunchRequest> timePunchData = null )
         {
             Mock<TimeClockContext> mockContext = context ?? new Mock<TimeClockContext>();
-            Mock<DbSet<TimePunch>> mockSet = punchListDbSet ?? new Mock<DbSet<TimePunch>>();
+            Mock<DbSet<TimePunchRequest>> mockSet = punchListDbSet ?? new Mock<DbSet<TimePunchRequest>>();
 
             var employee = new Employee()
             {
@@ -27,12 +27,12 @@ namespace WebApplication1.Tests
                 EmployeeId = 1,
             };
 
-            List<TimePunch> data;
+            List<TimePunchRequest> data;
             if (timePunchData == null)
             {
-                data = new List<TimePunch>()
+                data = new List<TimePunchRequest>()
                 {
-                    new TimePunch(1, TimePunchStatus.PunchedIn, DateTime.Now)
+                    new TimePunchRequest(1, TimePunchStatus.PunchedIn, DateTime.Now)
                 };
             }
             else
@@ -41,10 +41,10 @@ namespace WebApplication1.Tests
             }
 
 
-            mockSet.As<IQueryable<TimePunch>>().Setup(m => m.Provider).Returns(data.AsQueryable().Provider);
-            mockSet.As<IQueryable<TimePunch>>().Setup(m => m.Expression).Returns(data.AsQueryable().Expression);
-            mockSet.As<IQueryable<TimePunch>>().Setup(m => m.ElementType).Returns(data.AsQueryable().ElementType);
-            mockSet.As<IQueryable<TimePunch>>().Setup(m => m.GetEnumerator()).Returns(data.AsQueryable().GetEnumerator());
+            mockSet.As<IQueryable<TimePunchRequest>>().Setup(m => m.Provider).Returns(data.AsQueryable().Provider);
+            mockSet.As<IQueryable<TimePunchRequest>>().Setup(m => m.Expression).Returns(data.AsQueryable().Expression);
+            mockSet.As<IQueryable<TimePunchRequest>>().Setup(m => m.ElementType).Returns(data.AsQueryable().ElementType);
+            mockSet.As<IQueryable<TimePunchRequest>>().Setup(m => m.GetEnumerator()).Returns(data.AsQueryable().GetEnumerator());
 
             mockContext.Setup(c => c.TimePunches).Returns(mockSet.Object);
 
@@ -55,12 +55,12 @@ namespace WebApplication1.Tests
         public class TheAddTimePunchMethod
         {
             private Mock<TimeClockContext> _context;
-            private Mock<DbSet<TimePunch>> _punchList;
+            private Mock<DbSet<TimePunchRequest>> _punchList;
             [TestInitialize]
             public void Initialize()
             {
                 _context = new Mock<TimeClockContext>();
-                _punchList = new Mock<DbSet<TimePunch>>();
+                _punchList = new Mock<DbSet<TimePunchRequest>>();
             }
             [TestMethod]
             public void Add_A_New_Time_Punch_To_Context()
@@ -68,9 +68,9 @@ namespace WebApplication1.Tests
                 var employee = new Employee();
 
                 var timeService = CreateService(context: _context, punchListDbSet: _punchList);
-                timeService.AddTimePunch(employee, new TimePunch(1, TimePunchStatus.PunchedIn, DateTime.Now));
+                timeService.AddTimePunch(employee, new TimePunchRequest(1, TimePunchStatus.PunchedIn, DateTime.Now));
 
-                _punchList.Verify(m => m.Add(It.IsAny<TimePunch>()), Times.Once);
+                _punchList.Verify(m => m.Add(It.IsAny<TimePunchRequest>()), Times.Once);
                 _context.Verify(m => m.SaveChanges(), Times.Once);
             }
         }
@@ -78,12 +78,12 @@ namespace WebApplication1.Tests
         public class ThePunchListMethod
         {
             private Mock<TimeClockContext> _context;
-            private Mock<DbSet<TimePunch>> _punchList;
+            private Mock<DbSet<TimePunchRequest>> _punchList;
             [TestInitialize]
             public void Initialize()
             {
                 _context = new Mock<TimeClockContext>();
-                _punchList = new Mock<DbSet<TimePunch>>();
+                _punchList = new Mock<DbSet<TimePunchRequest>>();
             }
 
             [TestMethod]
@@ -95,7 +95,7 @@ namespace WebApplication1.Tests
                     EmployeeId = 1
                 };
 
-               IEnumerable<TimePunch> punchList = timeService.GetPunchList(employee.EmployeeId,
+               IEnumerable<TimePunchRequest> punchList = timeService.GetPunchList(employee.EmployeeId,
                     new TimeClockSpan(DateTime.Now.AddDays(-1), DateTime.Now));
             }
 
@@ -110,11 +110,11 @@ namespace WebApplication1.Tests
                     EmployeeId = 5
                 };
 
-                List<TimePunch> timePunchData = new List<TimePunch>()
+                List<TimePunchRequest> timePunchData = new List<TimePunchRequest>()
                 {
-                    new TimePunch(5, TimePunchStatus.PunchedIn, new DateTime(2016, 1, 1)),
-                    new TimePunch(5, TimePunchStatus.PunchedOut, new DateTime(2016, 1, 2)),
-                    new TimePunch(5, TimePunchStatus.PunchedIn, new DateTime(2016, 1, 3))
+                    new TimePunchRequest(5, TimePunchStatus.PunchedIn, new DateTime(2016, 1, 1)),
+                    new TimePunchRequest(5, TimePunchStatus.PunchedOut, new DateTime(2016, 1, 2)),
+                    new TimePunchRequest(5, TimePunchStatus.PunchedIn, new DateTime(2016, 1, 3))
                 };
 
                 var timeService = CreateService(timePunchData: timePunchData);
@@ -122,7 +122,7 @@ namespace WebApplication1.Tests
 
                 bool inTimeRange = true;
 
-                foreach (TimePunch punch in timeSheet.Where(punch => punch.Time < startTime || punch.Time > stopTime))
+                foreach (TimePunchRequest punch in timeSheet.Where(punch => punch.Time < startTime || punch.Time > stopTime))
                 {
                     inTimeRange = false;
                 }

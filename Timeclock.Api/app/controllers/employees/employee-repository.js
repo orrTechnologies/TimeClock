@@ -6,8 +6,8 @@
                 return $http.get('/api/employee/');
             },
 
-            changeClockStatus: function(employeeId, timePunchStatus) {
-                this.employee = { id: employeeId, status: timePunchStatus }
+            changeClockStatus: function(employeeId, timePunchStatus, pin) {
+                this.employee = { id: employeeId, status: timePunchStatus, pin: pin }
                 return $http.post('/api/employee/clock', this.employee);
             },
 

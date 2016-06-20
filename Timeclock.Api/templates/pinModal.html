@@ -1,0 +1,15 @@
+﻿<div>
+    <div class="modal-header">
+        <h3 class="modal-title">Enter PIN:</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger" ng-show="hasError">
+            PIN Number is required.
+        </div>
+        <input type="text" ng-model="pin"/>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary" type="button" ng-click="confirmDelete()">OK</button>
+    </div>
+</div>

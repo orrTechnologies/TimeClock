@@ -11,7 +11,7 @@ namespace TimeClock.Data.Models
         private TimePunchStatus _status;
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
+        public int? PIN { get; set; }
         public string FullName
         {
             get { return FirstName + " " + LastName; }
@@ -25,6 +25,17 @@ namespace TimeClock.Data.Models
                 _status = value;
                 LastPunchTime = DateTime.Now;
             }
+        }
+
+        public bool HasPin()
+        {
+            return PIN != null;
+        }
+        public bool CheckPIN(int PINNumber)
+        {
+            bool set = (PIN == null);
+            bool matches = (PINNumber == PIN);
+            return (PIN == null || PINNumber == PIN);
         }
 
         public DateTime? LastPunchTime { get; set; }

@@ -14,6 +14,7 @@ namespace Timeclock.Api.Models
         public string LastName { get; set; }
         public DateTime? LastPunchTime { get; set; }
         public TimePunchStatus CurrentStatus { get; set; }
+        public bool RequiresAuthentication { get; set; }
         public string FullName
         {
             get { return FirstName + " " + LastName; }
@@ -30,18 +31,28 @@ namespace Timeclock.Api.Models
 
     public class EmployeeAddBindingMdoel
     {
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
+        public int? PIN { get; set; }
     }
     public class EmployeeEditBindingModal
     {
+        [Required]
         public int EmployeeId { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
+        public int? PIN { get; set; }
     }
     public class TimePunchBindingModel
     {
+        [Required]
         public int Id { get; set; }
+        [Required]
         public TimePunchStatus Status { get; set; }
+        public int? PIN { get; set; }
     }
 }

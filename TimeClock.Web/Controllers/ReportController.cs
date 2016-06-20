@@ -72,7 +72,7 @@ namespace TimeClock.Web.Controllers
             return View(report);
         }
 
-        private IEnumerable<TimeReportDaily> MakeDailyReports(IEnumerable<TimePunch> timePunches)
+        private IEnumerable<TimeReportDaily> MakeDailyReports(IEnumerable<TimePunchRequest> timePunches)
         {
             var timePunchByDay = timePunches.GroupBy(t => t.Time.Date);
             var dailyReports = timePunchByDay.Select(t => new TimeReportDaily()
