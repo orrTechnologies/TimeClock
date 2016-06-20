@@ -20,5 +20,5 @@
         templateUrl: '/templates/admin/reports/timeWorkedReport.html',
         controller: 'TimeWorkedReportController'
     });
-        $routeProvider.otherwise({ templateUrl: '/templates/employees.html', controller: 'EmployeeListController' });
+        $routeProvider.otherwise({ templateUrl: '/templates/index.html' });
     });

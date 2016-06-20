@@ -1,21 +1,23 @@
 ﻿(function() {
     timeClock.controller("EmployeeListController", employeeListController);
 
-    function employeeListController($scope, employeeRepository, NgTableParams) {
-        var self = this;
+    function employeeListController(employeeRepository, NgTableParams) {
+        var vm = this;
+        this.employees = [];
+        this.tableParams = new NgTableParams({}, {});
 
-        $scope.employees = [];
-        self.tableParams = new NgTableParams({}, {});
+        //testing
+        this.showStatus = false;
 
         var init = function() {
             employeeRepository.get().success(function(data) {
-                $scope.employees = data;
-                $scope.tableParams = new NgTableParams({}, {dataset: data});
+                vm.employees = data;
+                vm.tableParams = new NgTableParams({}, { dataset: data });
             });
 
         }
 
-        $scope.changeClockStatus = function(employee) {
+        this.changeClockStatus = function (employee) {
             var self = this;
             employeeRepository.changeClockStatus(employee.employeeId, !employee.currentStatus)
                 .success(function(data, status, headers, config) {
@@ -24,7 +26,7 @@
                 });
         }
 
-        $scope.formatTime = function (dateTime) {
+        this.formatTime = function (dateTime) {
             return moment(dateTime).format("hh:mm A - D/MM/YY");
         }
 

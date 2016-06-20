@@ -9,9 +9,11 @@ namespace Timeclock.Api.Controllers
 {
     public class TaskList
     {
-        //TODO: Optional pin number for employees to clock in and out.
+        //TODO: WIP Optional pin number for employees to clock in and out.
+        //TODO: Add, edit, delete time punches.
         //TODO: Offices and groups. 
         //TODO: Reports selection should use ajax for office group employees selection. 
+        //TODO: Employee schedualed times, 
         //TODO: Sortable employee tables.
         //TODO: Admin panel - overview, employees clockin and out 
         //TODO: Record employees who are late - display list of late employees in admin overview. 

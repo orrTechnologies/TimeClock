@@ -204,6 +204,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\TimeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -228,6 +229,7 @@
     <Content Include="app\controllers\admin\reports\timeWorkedReportController.js" />
     <Content Include="app\controllers\admin\reports\reportsRepository.js" />
     <Content Include="app\controllers\admin\userManagerController.js" />
+    <Content Include="app\directives\employeeTableDirective.js" />
     <Content Include="app\directives\statusMessageDirective.js" />
     <Content Include="Content\sbadmin\ng-table.css" />
     <Content Include="Model1.Context.tt">
@@ -394,6 +396,7 @@
     <Content Include="templates\admin\reports\timeWorkedReport.html" />
     <Content Include="templates\admin\reports\timeReport.html" />
     <Content Include="templates\employees.html" />
+    <Content Include="templates\index.html" />
     <Content Include="templates\statusMessage\statusMessage.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
