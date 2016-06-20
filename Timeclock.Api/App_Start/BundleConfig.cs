@@ -13,7 +13,8 @@ namespace Timeclock.Api
                 "~/Scripts/angular-route.js",
                 "~/Scripts/angular-resource.js",
                 "~/Scripts/ui-bootstrap-tpls-1.3.3.js",
-                "~/Scripts/ng-table.js"));
+                "~/Scripts/ng-table.js",
+                "~/Scripts/underscore.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/timeclock").IncludeDirectory("~/app", "*.js", true));
 

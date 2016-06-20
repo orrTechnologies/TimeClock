@@ -9,7 +9,16 @@
         <div class="table-responsive">
             <table ng-table-dynamic="tableParams with cols" id="employee-table" class="table table-striped table-responsive">
                 <tr ng-repeat="employee in $data">
-                    <td ng-repeat="col in $columns">{{employee[col.field]}}</td>
+                    <!-- Note: we are not repeating over $columns therefore we need to render title and ng-show ourselves -->
+                    <td title="cols.fullName.title">
+                        {{employee[cols.fullName.field]}} {{debug(employee)}}
+                    </td>
+                    <!--<td title="demo.cols.age.title" ng-if="demo.cols.age.show">
+                        <em class="text-danger">{{ row[demo.cols.age.field] | number:1}}</em>
+                    </td>
+                    <td title="demo.cols.money.title" ng-if="demo.cols.money.show">
+                        {{row[demo.cols.money.field] | currency:'$'}}
+                    </td>-->
                 </tr>
             </table>
         </div>
