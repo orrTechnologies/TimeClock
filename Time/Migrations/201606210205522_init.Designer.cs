@@ -7,13 +7,13 @@ namespace TimeClock.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class IdentiyContext : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(IdentiyContext));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201604111600131_Identiy-Context"; }
+            get { return "201606210205522_init"; }
         }
         
         string IMigrationMetadata.Source

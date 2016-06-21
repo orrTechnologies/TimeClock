@@ -3,10 +3,22 @@ namespace TimeClock.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class IdentiyContext : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Employees",
+                c => new
+                    {
+                        EmployeeId = c.Int(nullable: false, identity: true),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        CurrentStatus = c.Int(nullable: false),
+                        LastPunchTime = c.DateTime(),
+                    })
+                .PrimaryKey(t => t.EmployeeId);
+            
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -29,6 +41,17 @@ namespace TimeClock.Data.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.TimePunches",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        EmployeeId = c.Int(nullable: false),
+                        Status = c.Int(nullable: false),
+                        Time = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -93,8 +116,10 @@ namespace TimeClock.Data.Migrations
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.TimePunches");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Employees");
         }
     }
 }

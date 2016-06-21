@@ -9,11 +9,10 @@ namespace TimeClock.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TimeClockContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<TimeClock.Data.TimeClockContext>
     {
         public Configuration()
         {
-            Database.SetInitializer<TimeClockContext>(new CreateDatabaseIfNotExists<TimeClockContext>());
             AutomaticMigrationsEnabled = true;
             ContextKey = "TimeClock.Data.TimeClockContext";
         }
@@ -62,6 +61,5 @@ namespace TimeClock.Data.Migrations
             //    );
             //
         }
-
     }
 }
