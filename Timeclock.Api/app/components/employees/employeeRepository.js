@@ -1,5 +1,5 @@
 ﻿(function() {
-    timeClock.factory('employeeRepository', function($resource, $http) {
+    angular.module('timeClock.employee').factory('employeeRepository', function ($resource, $http) {
 
         return {
             get: function() {

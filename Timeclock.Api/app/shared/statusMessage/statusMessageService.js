@@ -1,5 +1,5 @@
 ﻿(function () {
-    timeClock.service('statusMessageService', function () {
+    angular.module('timeClock.statusMessage').service('statusMessageService', function () {
 
         return {
             messages: [],

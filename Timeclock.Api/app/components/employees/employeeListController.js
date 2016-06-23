@@ -1,5 +1,5 @@
 ﻿(function() {
-    timeClock.controller("EmployeeListController", employeeListController);
+    angular.module('timeClock.employee').controller("EmployeeListController", employeeListController);
 
     function employeeListController($scope, employeeRepository, NgTableParams, $uibModal) {
         var self = this;
@@ -50,7 +50,7 @@
 
             var modalInstance = $uibModal.open({
                 animation: true,
-                templateUrl: '/templates/pinModal.html',
+                templateUrl: '/app/components/employees/pinModal.html',
                 controller: 'EmployeePinModalController'
             });
             modalInstance.result.then(function (pin) {

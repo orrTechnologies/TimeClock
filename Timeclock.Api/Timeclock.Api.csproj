@@ -223,14 +223,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\controllers\admin\addUserController.js" />
-    <Content Include="app\controllers\admin\deleteUserModalController.js" />
-    <Content Include="app\controllers\admin\EditUserController.js" />
-    <Content Include="app\controllers\admin\reports\timeWorkedReportController.js" />
-    <Content Include="app\controllers\admin\reports\reportsRepository.js" />
-    <Content Include="app\controllers\admin\userManagerController.js" />
-    <Content Include="app\controllers\employees\employee-pin-modal-controller.js" />
-    <Content Include="app\directives\statusMessageDirective.js" />
+    <Content Include="app\components\admin\admin.Module.js" />
+    <Content Include="app\components\admin\reports\timeReport.html" />
+    <Content Include="app\components\admin\reports\timeWorkedReport.html" />
+    <Content Include="app\components\employees\employee.Module.js" />
+    <Content Include="app\components\admin\userManager\addUserController.js" />
+    <Content Include="app\components\admin\userManager\deleteUserModalController.js" />
+    <Content Include="app\components\admin\userManager\editUserController.js" />
+    <Content Include="app\components\admin\reports\timeWorkedReportController.js" />
+    <Content Include="app\components\admin\reports\reportsRepository.js" />
+    <Content Include="app\components\admin\userManager\userManagerController.js" />
+    <Content Include="app\components\employees\employeePinModalController.js" />
+    <Content Include="app\components\employees\employeeListDirective.js" />
+    <Content Include="app\components\employees\employees.html" />
+    <Content Include="app\components\employees\pinModal.html" />
+    <Content Include="app\shared\statusMessage\statusMessage.html" />
+    <Content Include="app\shared\statusMessage\statusMessage.Module.js" />
+    <Content Include="app\shared\statusMessage\statusMessageDirective.js" />
     <Content Include="Content\sbadmin\ng-table.css" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -243,16 +252,16 @@
     <Content Include="Scripts\ng-table.js" />
     <Content Include="Scripts\ng-table.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-1.3.3-min.js" />
-    <Content Include="templates\admin\employeeManager\deleteEmployeeModal.html" />
-    <Content Include="templates\admin\employeeManager\employeeManager.html" />
-    <Content Include="app\controllers\statusmessages\statusMessageController.js" />
-    <Content Include="app\controllers\statusmessages\statusMessageService.js" />
-    <Content Include="templates\admin\employeeManager\addUser.html" />
-    <Content Include="app\controllers\admin\adminPanelController.js" />
+    <Content Include="app\components\admin\employeeManager\deleteEmployeeModal.html" />
+    <Content Include="app\components\admin\employeeManager\employeeManager.html" />
+    <Content Include="app\shared\statusMessage\statusMessageController.js" />
+    <Content Include="app\shared\statusMessage\statusMessageService.js" />
+    <Content Include="app\components\admin\employeeManager\addUser.html" />
+    <Content Include="app\components\admin\adminPanelController.js" />
     <Content Include="app\app.js" />
     <Content Include="app\employeeCtrl.js" />
-    <Content Include="app\controllers\employees\employee-list-controller.js" />
-    <Content Include="app\controllers\employees\employee-repository.js" />
+    <Content Include="app\components\employees\employeeListController.js" />
+    <Content Include="app\components\employees\employeeRepository.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-slate.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -392,12 +401,8 @@
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\sb-admin-2.js" />
-    <Content Include="templates\admin\adminPanel.html" />
-    <Content Include="templates\admin\reports\timeWorkedReport.html" />
-    <Content Include="templates\admin\reports\timeReport.html" />
+    <Content Include="app\components\admin\adminPanel.html" />
     <Content Include="templates\employees.html" />
-    <Content Include="templates\pinModal.html" />
-    <Content Include="templates\statusMessage\statusMessage.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -428,6 +433,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\controllers\" />
+    <Folder Include="app\directives\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

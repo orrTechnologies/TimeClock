@@ -1,5 +1,5 @@
 ﻿(function () {
-    timeClock.controller("EmployeePinModalController", employeePinModalController);
+    angular.module('timeClock.employee').controller("EmployeePinModalController", employeePinModalController);
 
     function employeePinModalController($scope, $uibModalInstance) {
 

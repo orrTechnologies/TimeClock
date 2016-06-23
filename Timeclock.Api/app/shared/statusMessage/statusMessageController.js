@@ -1,5 +1,5 @@
 ﻿(function() {
-    timeClock.controller("StatusMessageController", statusMessageController);
+    angular.module('timeClock.statusMessage').controller("StatusMessageController", statusMessageController);
 
     function statusMessageController($scope, statusMessageService) {
 
