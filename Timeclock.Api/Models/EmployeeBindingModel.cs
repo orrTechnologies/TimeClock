@@ -47,12 +47,4 @@ namespace Timeclock.Api.Models
         public string LastName { get; set; }
         public int? PIN { get; set; }
     }
-    public class TimePunchBindingModel
-    {
-        [Required]
-        public int Id { get; set; }
-        [Required]
-        public TimePunchStatus Status { get; set; }
-        public int? PIN { get; set; }
-    }
 }

@@ -217,8 +217,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EmployeeViewModel.cs" />
-    <Compile Include="Models\ReportViewModels.cs" />
+    <Compile Include="Models\EmployeeBindingModel.cs" />
+    <Compile Include="Models\ReportBindingModels.cs" />
+    <Compile Include="Models\TimeBindingModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

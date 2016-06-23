@@ -53,18 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201604111600131_Identiy-Context.cs" />
-    <Compile Include="Migrations\201604111600131_Identiy-Context.Designer.cs">
-      <DependentUpon>201604111600131_Identiy-Context.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606200152547_addPin.cs" />
-    <Compile Include="Migrations\201606200152547_addPin.Designer.cs">
-      <DependentUpon>201606200152547_addPin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606200247405_pinIsNullable.cs" />
-    <Compile Include="Migrations\201606200247405_pinIsNullable.Designer.cs">
-      <DependentUpon>201606200247405_pinIsNullable.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\TimePunch.cs" />
@@ -81,17 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604111600131_Identiy-Context.resx">
-      <DependentUpon>201604111600131_Identiy-Context.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606200152547_addPin.resx">
-      <DependentUpon>201606200152547_addPin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606200247405_pinIsNullable.resx">
-      <DependentUpon>201606200247405_pinIsNullable.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

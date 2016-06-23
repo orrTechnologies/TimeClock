@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.UI.WebControls;
+using Timeclock.Api.Models;
 using Timeclock.Services;
 using TimeClock.Data.Models;
 using TimeClock.Web.Models;

@@ -33,8 +33,8 @@
 
             employeeRepository.changeClockStatus(employee.employeeId, !employee.currentStatus, pin)
                 .success(function(data, status, headers, config) {
-                    self.employee.currentStatus = !self.employee.currentStatus;
-                    self.employee.lastPunchTime = data.lastPunchTime;
+                    employee.currentStatus = !employee.currentStatus;
+                    employee.lastPunchTime = data.lastPunchTime;
                     $scope.employee = {};
                 })
                 .error(function() {

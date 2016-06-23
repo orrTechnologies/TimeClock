@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Web;
-using System.Web.Mvc;
 using TimeClock.Data;
-using TimeClock.Data.Models;
 
-namespace TimeClock.Web.Models
+namespace Timeclock.Api.Models
 {
     public class ReportRequest
     {
