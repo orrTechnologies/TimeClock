@@ -3,13 +3,14 @@
 
     function addUserController($scope, $location, employeeRepository, statusMessageService) {
         $scope.hasError = false;
-
         $scope.employee = {
             firstName: "",
             lastName: ""
         };
 
-        $scope.save = function() {
+        $scope.save = save;
+
+        function save() {
             console.log(this.employee);
             employeeRepository.saveNewEmployee(this.employee)
                 .success(function () {

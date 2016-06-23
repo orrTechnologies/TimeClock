@@ -3,12 +3,13 @@
 
     function editUserController($scope, $location, $routeParams, employeeRepository, statusMessageService) {
         $scope.loaded = false;
-
         $scope.employee = {
             id: 0,
             firstName: "",
             lastName: ""
         };
+
+        $scope.save = save;
 
         var init = function() {
             employeeRepository.load($routeParams.id).success(function(response) {
@@ -17,7 +18,7 @@
             });
         }
 
-        $scope.save = function () {
+       function save() {
             console.log(this.employee);
             employeeRepository.save(this.employee)
                 .success(function () {

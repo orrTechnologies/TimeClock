@@ -4,19 +4,23 @@
     function userManagerController($scope, $location, employeeRepository, $uibModal, statusMessageService) {
         $scope.employees = [];
 
+        $scope.add = add;
+        $scope.edit = edit;
+        $scope.delete = deleteEmployee;
+
         var init = function() {
             employeeRepository.get().success(function(data) {
                 $scope.employees = data;
             });
         }
 
-        $scope.add = function () {
+       function add() {
             $location.url('/admin/addUser');
         }
-        $scope.edit = function(employee) {
+       function edit(employee) {
             $location.url('/admin/editUser/' + employee.employeeId);
         }
-        $scope.delete = function(employee) {
+       function deleteEmployee(employee) {
             var modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: '/templates/admin/employeeManager/deleteEmployeeModal.html',

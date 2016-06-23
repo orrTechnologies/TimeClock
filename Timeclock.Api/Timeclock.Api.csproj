@@ -433,6 +433,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\components\admin\timeManager\" />
     <Folder Include="app\controllers\" />
     <Folder Include="app\directives\" />
     <Folder Include="App_Data\" />

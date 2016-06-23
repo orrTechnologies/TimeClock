@@ -9,6 +9,9 @@
 
         $scope.selectedEmployee = null;
 
+        $scope.changeClockStatus = changeClockStatus;
+        $scope.formatTime = formatTime;
+
         var init = function() {
             employeeRepository.get().success(function(data) {
                 $scope.employees = data;
@@ -17,7 +20,7 @@
 
         }
 
-        $scope.changeClockStatus = function (employee) {
+        function changeClockStatus(employee) {
             $scope.selectedEmployee = employee;
 
             if (employee.requiresAuthentication) {
@@ -27,7 +30,7 @@
             }
         }
 
-        var submitChangeClockRequest = function (pin) {
+        function submitChangeClockRequest (pin) {
 
             var employee = $scope.selectedEmployee;
 
@@ -42,11 +45,11 @@
                 });
         }
 
-        $scope.formatTime = function (dateTime) {
+        function formatTime(dateTime) {
             return moment(dateTime).format("hh:mm A - D/MM/YY");
         }
 
-        var showPinModal = function () {
+        function showPinModal() {
 
             var modalInstance = $uibModal.open({
                 animation: true,
