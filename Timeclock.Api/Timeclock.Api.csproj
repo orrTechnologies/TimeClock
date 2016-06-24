@@ -226,6 +226,9 @@
     <Content Include="app\components\admin\admin.Module.js" />
     <Content Include="app\components\admin\reports\timeReport.html" />
     <Content Include="app\components\admin\reports\timeWorkedReport.html" />
+    <Content Include="app\components\admin\timeManager\timeManager.Module.js" />
+    <Content Include="app\components\admin\timeManager\timeManager.html" />
+    <Content Include="app\components\admin\timeManager\timeManagerController.js" />
     <Content Include="app\components\employees\employee.Module.js" />
     <Content Include="app\components\admin\userManager\addUserController.js" />
     <Content Include="app\components\admin\userManager\deleteUserModalController.js" />
