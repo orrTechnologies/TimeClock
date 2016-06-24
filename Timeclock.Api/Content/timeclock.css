@@ -1,4 +1,7 @@
 ﻿/****** Layout **************/
+#page-wrapper {
+    background: #f1f1f1;
+}
 .body-wrapper {
     margin-top: 10px;
 }
@@ -57,3 +60,5 @@
 .punched-out {
     background: red;
 }
+
+/******** Time Editor *********/

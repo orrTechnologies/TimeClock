@@ -204,6 +204,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\TimeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,6 +230,7 @@
     <Content Include="app\components\admin\timeManager\timeManager.Module.js" />
     <Content Include="app\components\admin\timeManager\timeManager.html" />
     <Content Include="app\components\admin\timeManager\timeManagerController.js" />
+    <Content Include="app\components\admin\timeManager\timePunchRepository.js" />
     <Content Include="app\components\employees\employee.Module.js" />
     <Content Include="app\components\admin\userManager\addUserController.js" />
     <Content Include="app\components\admin\userManager\deleteUserModalController.js" />
@@ -436,7 +438,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\components\admin\timeManager\" />
     <Folder Include="app\controllers\" />
     <Folder Include="app\directives\" />
     <Folder Include="App_Data\" />

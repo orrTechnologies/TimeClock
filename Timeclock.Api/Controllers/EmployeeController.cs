@@ -83,7 +83,7 @@ namespace Timeclock.Api.Controllers
         [AllowAnonymous]
         [Route("Clock/")]
         [HttpPost]
-        public IHttpActionResult Clock(TimePunchBindingModel timePunchBindingModel)
+        public IHttpActionResult Clock(TimePunchRequestBindingModel timePunchBindingModel)
         {
             Employee employee = _employeeService.FindById(timePunchBindingModel.Id);
             if (employee == null)

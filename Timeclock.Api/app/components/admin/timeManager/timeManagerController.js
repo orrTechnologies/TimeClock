@@ -1,28 +1,34 @@
 ﻿(function () {
 angular.module('timeClock.timeManager').controller("TimeManagerController", timeManagerController);
 
-    function timeManagerController($scope, $location, employeeRepository, reportsRepository) {
-        $scope.selectedId = [];
+    function timeManagerController($scope, $location, employeeRepository, timePunchRepository) {
+        $scope.selectedEmployee = null;
+
         $scope.employeeList = [];
         $scope.startTime = '';
         $scope.endTime = '';
-
         $scope.endDateOptions = {};
         $scope.startDateOptions = {};
-
-        $scope.timeReports = [];
-
-        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        $scope.timeCard = [];
+        $scope.formats = ['MMMM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
         $scope.format = $scope.formats[0];
+        
+        /**** Public Methods *******/
+        $scope.openStart = openStart;
+        $scope.openEnd = openEnd;
+        $scope.startTimeChanged = startTimeChanged;
+        $scope.endTimeChanged = endTimeChanged;
+        $scope.checkForm = checkForm;
 
         $scope.startInfo = {
-            time: '', 
+            time: '',
             opened: false
-         }
+        };
         $scope.endInfo = {
             time: '',
             opened: false
-        }
+        };
+
         var init = function () {
            employeeRepository.get().success(function (employees) {
                employees.forEach(function (employee) {
@@ -31,36 +37,45 @@ angular.module('timeClock.timeManager').controller("TimeManagerController", time
             });
         }
 
-        $scope.openStart = function () {
+        $scope.$watch('timeSelectionForm.$valid', formValidity);
+
+        function formValidity() {
+            checkForm();
+        }
+        function selectedEmployeeChanged() {
+            checkForm();
+        }
+        function checkForm() {
+            if ($scope.timeSelectionForm.$valid && $scope.timeSelectionForm.$dirty) {
+                timePunchRepository.load($scope.selectedEmployee.employeeId, $scope.startTime, $scope.endTime)
+                    .success(function(data) {
+                        $scope.timeCard = data;
+                    });
+            }
+        }
+
+        function openStart() {
             $scope.startInfo.opened = true;
         };
-        $scope.openEnd = function () {
+        function openEnd() {
             $scope.endInfo.opened = true;
         };
-
-        $scope.submit = function() {
-            reportsRepository.load({ employeeIds: $scope.selectedIds, startTime: $scope.startTime, endTime: $scope.endTime })
-                .success(function(data) {
-                $scope.timeReports = data;
-            });
-        }
-
-        var setEndDateOptions = function() {
-            $scope.endDateOptions = { minDate: $scope.startTime };
-        }
-
-        var setStartDateOptions = function() {
-            $scope.startDateOptions = { maxDate: $scope.endTime };
-        }
-        $scope.startTimeChanged = function (startTime) {
+        function startTimeChanged() {
             setEndDateOptions();
         }
-        $scope.endTimeChanged = function (endTime) {
+        function endTimeChanged() {
             setStartDateOptions();
         }
-        $scope.back = function() {
-            $scope.timeReports = [];
+
+        function setEndDateOptions() {
+            $scope.endDateOptions = { minDate: $scope.startTime };
         }
+        function setStartDateOptions() {
+            $scope.startDateOptions = { maxDate: $scope.endTime };
+        }
+
+
+        
         init();
     }
 })();

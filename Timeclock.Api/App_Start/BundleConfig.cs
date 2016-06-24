@@ -41,11 +41,11 @@ namespace Timeclock.Api
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css",
-                "~/Content/bootstrap.css",
-                "~/Content/timeclock.css"));
+                "~/Content/bootstrap.css"));
 
             bundles.Add(new StyleBundle("~/Content/sbadmin").Include(
                 "~/Content/sbadmin/sb-admin-2.css",
+                "~/Content/timeclock.css",
                 "~/Content/sbadmin/metisMenu.css",
                 "~/Content/sbadmin/ng-table.css",
                  "~/Content/font-awesome.css"));
