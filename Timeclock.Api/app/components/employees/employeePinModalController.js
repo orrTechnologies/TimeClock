@@ -6,7 +6,10 @@
         $scope.pin = "";
         $scope.hasError = false;
 
-        $scope.confirmDelete = function () {
+        $scope.confirmDelete = confirmDelete;
+        $scope.cancel = cancel;
+
+        function confirmDelete() {
             if ($scope.pin == "") {
                 $scope.hasError = true;
             } else {
@@ -14,7 +17,7 @@
             }
         }
 
-        $scope.cancel = function () {
+        function cancel() {
             $uibModalInstance.dismiss('cancel');
         }
     }

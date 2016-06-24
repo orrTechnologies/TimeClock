@@ -5,7 +5,10 @@
 
         $scope.employee = employee;
 
-        $scope.confirmDelete = function () {
+        $scope.confirmDelete = confirmDelete;
+        $scope.cancel = cancel;
+
+        function confirmDelete () {
             employeeRepository.deleteEmployee(this.employee)
                 .success(function () {
                     this.hasError = false;
@@ -19,7 +22,7 @@
                 });
         }
 
-        $scope.cancel = function() {
+        function cancel() {
             $uibModalInstance.dismiss('cancel');
         }
     }
