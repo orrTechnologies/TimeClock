@@ -8,7 +8,7 @@ This is a Alpha ASP.net employee time clock project aimed at replacing manual ti
 <ul>
 <li>Add, edit, and delete employees </li>
 <li>TimeReports that show you how long each employee work in a given time frame.</li>
-<ul>
+</ul>
 
 <b> RoadMap </b>
 <br>
