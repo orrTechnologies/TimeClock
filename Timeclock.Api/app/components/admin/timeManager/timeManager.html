@@ -59,6 +59,9 @@
                                     <th>
                                         Time
                                     </th>
+                                    <th>
+                                        Actions
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,6 +72,14 @@
                                     </td>
                                     <td>
                                         {{timePunch.time}}
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-default" ng-click="edit(timePunch)">
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                        </button>
+                                        <button class="btn btn-default" ng-click="delete(timePunch)">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>

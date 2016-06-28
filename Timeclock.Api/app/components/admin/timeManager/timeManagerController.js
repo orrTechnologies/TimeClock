@@ -19,6 +19,8 @@ angular.module('timeClock.timeManager').controller("TimeManagerController", time
         $scope.startTimeChanged = startTimeChanged;
         $scope.endTimeChanged = endTimeChanged;
         $scope.checkForm = checkForm;
+        $scope.edit = editTime;
+
 
         $scope.startInfo = {
             time: '',
@@ -42,9 +44,6 @@ angular.module('timeClock.timeManager').controller("TimeManagerController", time
         function formValidity() {
             checkForm();
         }
-        function selectedEmployeeChanged() {
-            checkForm();
-        }
         function checkForm() {
             if ($scope.timeSelectionForm.$valid && $scope.timeSelectionForm.$dirty) {
                 timePunchRepository.load($scope.selectedEmployee.employeeId, $scope.startTime, $scope.endTime)
@@ -65,6 +64,10 @@ angular.module('timeClock.timeManager').controller("TimeManagerController", time
         }
         function endTimeChanged() {
             setStartDateOptions();
+        }
+         function editTime(timePunch)
+        {
+            
         }
 
         function setEndDateOptions() {
