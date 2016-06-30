@@ -18,7 +18,7 @@
                         <div ng-hide="employee.currentStatus == 0" class="punch-status  punched-out"></div>
                     </td>
                     <td data-title="'Time'">
-                        {{formatTime(employee.lastPunchTime)}}
+                        <span am-time-ago="employee.lastPunchTime "></span>
                     </td>
                     <td data-title="'Actions'">
                         <button class="btn btn-clock" ng-click="changeClockStatus(employee)">

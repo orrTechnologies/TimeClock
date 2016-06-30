@@ -10,7 +10,6 @@
         $scope.selectedEmployee = null;
 
         $scope.changeClockStatus = changeClockStatus;
-        $scope.formatTime = formatTime;
 
         var init = function() {
             employeeRepository.get().success(function(data) {
@@ -44,11 +43,6 @@
                     $scope.employee = {};
                 });
         }
-
-        function formatTime(dateTime) {
-            return moment(dateTime).format("hh:mm A - D/MM/YY");
-        }
-
         function showPinModal() {
 
             var modalInstance = $uibModal.open({
