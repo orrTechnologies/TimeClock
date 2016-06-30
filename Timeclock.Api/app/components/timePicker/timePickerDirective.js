@@ -5,6 +5,7 @@
         replace: true,
         controller: 'TimePickerController',
         scope: {
+            date: '='
         },
         link: function () {
         }

@@ -1,21 +1,50 @@
 ﻿(function () {
     angular.module('timeClock.timePicker').controller("TimePickerController", timePickerController);
 
-    function timePickerController($scope) {
+    function timePickerController($scope, moment) {
 
-        $scope.time = new Date();
-        $scope.hour = hour();
+        $scope.momentTime = moment();
 
         $scope.addHour = addHour;
+        $scope.subtractHour = subtractHour;
+        $scope.addTenMinutes = addTenMinutes;
+        $scope.subtractTenMinutes = subtractTenMinutes;
+        $scope.addMinute = addMinute;
+        $scope.subtractMinute = subtractMinute;
+        $scope.time = time;
 
-        function hour() {
-            return $scope.time.getHours() % 12 || 12;
+        function time() {
+            return $scope.momentTime.format();
         }
 
         function addHour() {
-            $scope.time.setHours();
+            $scope.momentTime.add(1, 'h');
+            updateDate();
+        }
+        function subtractHour() {
+            $scope.momentTime.add(-1, 'h');
+            updateDate();
+        }
+        function addTenMinutes() {
+            $scope.momentTime.add(10, 'm');
+            updateDate();
+        }
+        function subtractTenMinutes() {
+            $scope.momentTime.add(-10, 'm');
+            updateDate();
+        }
+        function addMinute() {
+            $scope.momentTime.add(1, 'm');
+            updateDate();
+        }
+        function subtractMinute() {
+            $scope.momentTime.add(-1, 'm');
+            updateDate();
         }
 
+        function updateDate() {
+            $scope.date = $scope.momentTime.toDate();
+        }
 
     }
 })();

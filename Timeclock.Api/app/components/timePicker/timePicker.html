@@ -1,5 +1,33 @@
 ﻿<div class="time-picker">
-    <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
-    <div>{{hour}}</div>
-    <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+
+    <div class="time-selector hour-selector">
+        <button class="btn btn-default" ng-click="addHour()">
+            <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+        </button>
+        <div>{{time() | amDateFormat: 'h'}}</div>
+        <button class="btn btn-default" ng-click="subtractHour()"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></button>
+    </div>
+
+    <div class="time-selector seperator">
+        <span>:</span>
+    </div>
+
+    <div class="time-selector ten-minute-selector">
+        <button class="btn btn-default"><span class="glyphicon glyphicon-menu-up" aria-hidden="true" ng-click="addTenMinutes()"></span></button>
+        <div>{{time() | amDateFormat: 'mm' | limitTo : 1  }}</div>
+        <button class="btn btn-default"><span class="glyphicon glyphicon-menu-down" aria-hidden="true" ng-click="subtractTenMinutes()"></span></button>
+    </div>
+
+    <div class="time-selector minute-selector">
+        <button class="btn btn-default"><span class="glyphicon glyphicon-menu-up" aria-hidden="true" ng-click="addMinute()"></span></button>
+        <div>{{time() | amDateFormat: 'mm' | limitTo : 1 : 1 }}</div>
+        <button class="btn btn-default"><span class="glyphicon glyphicon-menu-down" aria-hidden="true" ng-click="subtractMinute()"></span></button>
+    </div>
+    <style>
+         .time-selector {
+             text-align: center;
+            display: inline-block;
+        }
+    </style>
 </div>
+

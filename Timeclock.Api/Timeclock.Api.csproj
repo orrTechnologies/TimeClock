@@ -247,6 +247,7 @@
     <Content Include="app\components\timePicker\timePicker.html" />
     <Content Include="app\components\timePicker\timePicker.Module.js" />
     <Content Include="app\components\timePicker\timePickerDev.html" />
+    <Content Include="app\components\timePicker\timePickerDevController.js" />
     <Content Include="app\components\timePicker\timePickerDirective.js" />
     <Content Include="app\shared\statusMessage\statusMessage.html" />
     <Content Include="app\shared\statusMessage\statusMessage.Module.js" />
