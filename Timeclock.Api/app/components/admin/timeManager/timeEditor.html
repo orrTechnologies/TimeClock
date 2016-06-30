@@ -10,7 +10,19 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Time</label>
                         <div class="col-sm-9">
-                            <input type="text" ng-enabled="loaded" ng-model="time" class="form-control" required />
+                            <div class="input-group-btn">
+                                <input type="text" ng-enabled="loaded" ng-model="time" class="form-control" required/>
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <div role="separator" class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Separated link</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button ng-disabled="addUserForm.$invalid" ng-click="save()" class="btn btn-default">Save</button>

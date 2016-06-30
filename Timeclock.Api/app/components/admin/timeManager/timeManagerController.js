@@ -65,10 +65,9 @@ angular.module('timeClock.timeManager').controller("TimeManagerController", time
         function endTimeChanged() {
             setStartDateOptions();
         }
-         function editTime(timePunch)
-        {
-            
-        }
+         function editTime(timePunch) {
+             $location.path('/admin/time/edit/').search({ id: timePunch.id });
+         }
 
         function setEndDateOptions() {
             $scope.endDateOptions = { minDate: $scope.startTime };
