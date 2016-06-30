@@ -38,7 +38,7 @@
                 </div>
                 <div class="panel-body">
                     <div ng-repeat="dayReport in report.dailyReports">
-                        <span>{{dayReport.date}}</span>
+                        <span>{{dayReport.date | amDateFormat: 'dddd, MMMM Do YYYY'}}</span>
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
@@ -57,7 +57,7 @@
                                         <div ng-hide="timePunch.status == 0" class="punch-status  punched-out"></div>
                                     </td>
                                     <td>
-                                        {{timePunch.time}}
+                                        {{timePunch.time | amDateFormat: 'h:mm:ss a'}}
                                     </td>
                                 </tr>
                             </tbody>
