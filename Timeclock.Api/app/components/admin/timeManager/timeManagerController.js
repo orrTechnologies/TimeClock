@@ -46,7 +46,7 @@ angular.module('timeClock.timeManager').controller("TimeManagerController", time
         }
         function checkForm() {
             if ($scope.timeSelectionForm.$valid && $scope.timeSelectionForm.$dirty) {
-                timePunchRepository.load($scope.selectedEmployee.employeeId, $scope.startTime, $scope.endTime)
+                timePunchRepository.loadByDate($scope.selectedEmployee.employeeId, $scope.startTime, $scope.endTime)
                     .success(function(data) {
                         $scope.timeCard = data;
                     });

@@ -43,7 +43,7 @@
         }
 
         function updateDate() {
-            $scope.date = $scope.momentTime.toDate();
+            $scope.datePicked = $scope.momentTime.toDate();
         }
 
     }

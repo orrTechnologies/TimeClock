@@ -1,7 +1,8 @@
 ﻿
+
 <div class="row">
     <div class="col-md-5">
-        <div class="panel panel-default">
+        <div class="time-editor-panel panel panel-default">
             <div class="panel-heading">
                 <span>Time Editor</span>
             </div>
@@ -9,18 +10,16 @@
                 <form name="addUserForm" class="form-horizontal">
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Time</label>
-                        <div class="col-sm-9">
-                            <div class="input-group-btn">
-                                <input type="text" ng-enabled="loaded" ng-model="time" class="form-control" required/>
-                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-btn">
+                                    <input type="text" ng-enabled="loaded" ng-model="time" class="form-control" required/>
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Date
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <time-picker date="date"></time-picker>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -31,3 +30,8 @@
         </div>
     </div>
 </div>
+<script>
+$(document).on('click', '.time-editor-panel .dropdown-menu', function (e) {
+  e.stopPropagation();
+});
+</script>

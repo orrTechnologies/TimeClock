@@ -19,9 +19,21 @@ namespace Timeclock.Api.Controllers
                 _timeService = timeService;
             }
 
+            [HttpGet]
+            public TimePunchBindingModal Load(int id)
+            {
+                TimePunch punch = _timeService.FindById(id);
+                return new TimePunchBindingModal()
+                {
+                    Id = punch.Id,
+                    Status = punch.Status,
+                    Time = punch.Time
+                };
+            }
+
             [HttpPost]
-            [Route("Load/")]
-            public List<TimePunchBindingModal> Get(TimeCardRequest timeCardRequest)
+            [Route("LoadByDate/")]
+            public List<TimePunchBindingModal> LoadByDate(TimeCardRequest timeCardRequest)
             {
                 if (ModelState.IsValid)
                 {

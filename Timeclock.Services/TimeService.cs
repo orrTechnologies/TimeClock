@@ -28,11 +28,20 @@ namespace Timeclock.Services
                 && t.Time >= timeClockSpan._start && t.Time <= timeClockSpan._end).ToList();
             return punchList;
         }
+
+
+        public TimePunch FindById(int id)
+        {
+            var punch = _context.TimePunches.Find(id);
+            return punch;
+        }
     }
 
     public interface ITimeService
     {
         void AddTimePunch(Employee employee, TimePunch punch);
+
+        TimePunch FindById(int id);
        List<TimePunch> GetPunchList(int employeeId, TimeClockSpan timeClockSpan);
     }
 }

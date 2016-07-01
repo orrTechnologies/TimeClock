@@ -4,8 +4,9 @@
         templateUrl: "app/components/timePicker/timePicker.html",
         replace: true,
         controller: 'TimePickerController',
+
         scope: {
-            date: '='
+            datePicked: '=date'
         },
         link: function () {
         }

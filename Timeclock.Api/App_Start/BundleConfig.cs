@@ -21,7 +21,8 @@ namespace Timeclock.Api
                 "~/Scripts/ng-table.js",
                 "~/Scripts/angular-moment.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/timeclock").IncludeDirectory("~/app", "*.js", true));
+            //load module file first
+            bundles.Add(new ScriptBundle("~/bundles/timeclock").IncludeDirectory("~/app", "*.Module.js", true).IncludeDirectory("~/app", "*.js", true));
 
             bundles.Add(new ScriptBundle("~/bundles/sbadmin")
                 .Include("~/Scripts/sb-admin-2.js",
