@@ -5,10 +5,6 @@ using TimeClock.Web.Services;
 
 namespace Timeclock.Services
 {
-    public interface IReportService
-    {
-        ITimeReport GenerateTimeWorkReport(int employeeIds, TimeClockSpan span);
-    }
     public class ReportService : IReportService
     {
         private readonly IEmployeeService _employeeService;

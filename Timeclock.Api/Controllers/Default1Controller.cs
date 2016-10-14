@@ -13,7 +13,6 @@ namespace Timeclock.Api.Controllers
         //TODO: Migrate to automapper.
         //TODO: Offices and groups. 
         //TODO: Reports selection should use ajax for office group employees selection. 
-        //TODO: Sortable employee tables.
         //TODO: Admin panel - overview, employees clockin and out 
         //TODO: Record employees who are late - display list of late employees in admin overview. 
     }

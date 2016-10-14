@@ -29,10 +29,4 @@ namespace Timeclock.Services
             return punchList;
         }
     }
-
-    public interface ITimeService
-    {
-        void AddTimePunch(Employee employee, TimePunch punch);
-       List<TimePunch> GetPunchList(int employeeId, TimeClockSpan timeClockSpan);
-    }
 }
