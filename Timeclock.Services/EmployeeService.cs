@@ -38,7 +38,6 @@ namespace TimeClock.Web.Services
             if (employee.CurrentStatus == request.Status) return false;
 
             //Check PIN Number If pin exist and pin does not match employee pin
-
             if (employee.HasPin())
             {
                 //No Pin sent in request or the pin that was sent does not match.

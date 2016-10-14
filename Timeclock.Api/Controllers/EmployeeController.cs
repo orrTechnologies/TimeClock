@@ -91,7 +91,7 @@ namespace Timeclock.Api.Controllers
                 return NotFound();
             }
 
-            TimePunchRequest request = new TimePunchRequest(timePunchBindingModel.Id, timePunchBindingModel.Status);
+            var request = new TimePunchRequest(timePunchBindingModel.Id, timePunchBindingModel.Status);
             if (timePunchBindingModel.PIN != null)
             {
                 request.PIN = timePunchBindingModel.PIN;

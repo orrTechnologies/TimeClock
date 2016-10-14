@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+// ReSharper disable InconsistentNaming
 
 namespace TimeClock.Data.Models
 {
@@ -9,9 +10,15 @@ namespace TimeClock.Data.Models
         public int EmployeeId { get; set; }
 
         private TimePunchStatus _status;
+
+        [MaxLength(50), MinLength(2)]
         public string FirstName { get; set; }
+
+        [MaxLength(50), MinLength(2)]
         public string LastName { get; set; }
-        public int? PIN { get; set; }
+
+        public Int16? PIN { get; set; }
+
         public string FullName
         {
             get { return FirstName + " " + LastName; }
@@ -31,10 +38,9 @@ namespace TimeClock.Data.Models
         {
             return PIN != null;
         }
+
         public bool CheckPIN(int PINNumber)
         {
-            bool set = (PIN == null);
-            bool matches = (PINNumber == PIN);
             return (PIN == null || PINNumber == PIN);
         }
 
