@@ -40,7 +40,7 @@ namespace TimeClock.Data
             modelBuilder.Entity<Employee>().Property(p => p.FirstName).HasMaxLength(50);
             modelBuilder.Entity<Employee>().Property(p => p.LastName).HasMaxLength(50);
             modelBuilder.Entity<Employee>().HasKey(e => e.EmployeeId);
-
+            modelBuilder.Entity<Employee>().HasMany(e => e.TimePunches);
 
             base.OnModelCreating(modelBuilder);
         }

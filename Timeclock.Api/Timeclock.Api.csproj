@@ -239,9 +239,9 @@
     <Content Include="app\shared\statusMessage\statusMessage.html" />
     <Content Include="app\shared\statusMessage\statusMessage.Module.js" />
     <Content Include="app\shared\statusMessage\statusMessageDirective.js" />
-    <Content Include="App_Data\timeclock2.mdf" />
-    <Content Include="App_Data\timeclock2_log.ldf">
-      <DependentUpon>timeclock2.mdf</DependentUpon>
+    <Content Include="App_Data\timeclock3.mdf" />
+    <Content Include="App_Data\timeclock3_log.ldf">
+      <DependentUpon>timeclock3.mdf</DependentUpon>
     </Content>
     <Content Include="Content\sbadmin\ng-table.css" />
     <Content Include="Model1.Context.tt">

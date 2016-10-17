@@ -18,7 +18,7 @@ namespace Timeclock.Services
 
         public void AddTimePunch(Employee employee, TimePunch punch)
         {
-            _context.TimePunches.Add(punch);
+            employee.TimePunches.Add(punch);
             _context.SaveChanges();
         }
 

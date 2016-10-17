@@ -101,7 +101,7 @@ namespace Timeclock.Api.Controllers
             if (_employeeService.ChangeClockStatus(request))
             {
                 _timeService.AddTimePunch(employee,
-                    new TimePunch(timePunchBindingModel.Id, timePunchBindingModel.Status, DateTime.Now));
+                    new TimePunch(timePunchBindingModel.Status, DateTime.Now));
                 return Ok(employee);
             }
             return BadRequest();
