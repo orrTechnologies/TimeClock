@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
+using TimeClock.Data;
 using TimeClock.Data.Models;
-using TimeClock.Web.Models;
-using TimeClock.Web.Services;
 
 namespace Timeclock.Services
 {

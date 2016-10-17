@@ -1,12 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using Timeclock.Services;
 using TimeClock.Data;
 using TimeClock.Data.Models;
 
-namespace TimeClock.Web.Services
+namespace Timeclock.Services
 {
     public class EmployeeService : IEmployeeService
     {
@@ -19,7 +17,7 @@ namespace TimeClock.Web.Services
 
         public List<Employee> FindByStatus(TimePunchStatus status)
         {
-            return _context.Employees.Where(e => e.CurrentStatus == status).ToList();
+            return _context.Employees.Where(e => e.PunchStatus == status).ToList();
         }
 
         public void CreateEmployee(Employee employee)
@@ -35,24 +33,49 @@ namespace TimeClock.Web.Services
             if (employee == null) { return false; }
 
             //Can not change status to current status. 
-            if (employee.CurrentStatus == request.Status) return false;
+            if (employee.PunchStatus == request.Status) return false;
 
             //Check PIN Number If pin exist and pin does not match employee pin
             if (employee.HasPin())
             {
                 //No Pin sent in request or the pin that was sent does not match.
-                if (request.PIN == null || !employee.CheckPIN((int) request.PIN))
+                if (request.PIN == null || employee.CheckPIN((int)request.PIN) == false)
                 {
                     return false;
                 }
             }
             //Clock the employee out, and save. 
-            employee.CurrentStatus = request.Status;
+            employee.PunchStatus = request.Status;
             UpdateEmployee(employee);
 
             return true;
-
         }
+
+
+        //public bool ChangeClockStatus(TimePunchRequest request)
+        //{
+        //    IEmployee employee = FindById(request.EmployeeId);
+        //    if (employee == null) { return false; }
+
+        //    //Can not change status to current status. 
+        //    if (employee.PunchStatus == request.Status) return false;
+
+        //    //Check PIN Number If pin exist and pin does not match employee pin
+        //    if (employee.HasPin())
+        //    {
+        //        //No Pin sent in request or the pin that was sent does not match.
+        //        if (request.PIN == null || employee.CheckPIN((int) request.PIN) == false)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    //Clock the employee out, and save. 
+        //    employee.PunchStatus = request.Status;
+        //    UpdateEmployee(employee);
+
+        //    return true;
+
+        //}
 
         public List<Employee> GetEmployeeList()
         {

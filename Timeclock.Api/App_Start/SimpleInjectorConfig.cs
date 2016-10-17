@@ -3,7 +3,6 @@ using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 using Timeclock.Services;
 using TimeClock.Data;
-using TimeClock.Web.Services;
 
 namespace Timeclock.Api
 {

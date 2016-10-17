@@ -1,24 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TimeClock.Data;
 using TimeClock.Data.Models;
 
-namespace TimeClock.Web.Models
+namespace TimeClock.Data
 {
-    public interface ITimeReport
-    {
-        Employee Employee { get; }
-        IEnumerable<TimeReportDaily> DailyReports { get; }
-        double TimeWorked { get; }
-    }
-
     public class TimeReport : ITimeReport
     {
 
-        public  Employee Employee { get; private set; }
-        private  IReadOnlyCollection<TimePunch> _timePunches;
+        public Employee Employee { get; private set; }
+        private IReadOnlyCollection<TimePunch> _timePunches;
         private double _totalMinutesTimeWorked = -1;
+
         public TimeReport(Employee employee, IReadOnlyCollection<TimePunch> timePunches)
         {
             Employee = employee;
@@ -30,15 +23,16 @@ namespace TimeClock.Web.Models
         {
             get
             {
+                //Cache the calculated result, in cases its called multiple times. 
                 if (_totalMinutesTimeWorked == -1)
                 {
                     _totalMinutesTimeWorked = Calculate();
                 }
-                return Math.Round(_totalMinutesTimeWorked / 60, 2);
+                return Math.Round(_totalMinutesTimeWorked/60, 2);
             }
         }
 
-        public IEnumerable<TimeReportDaily> DailyReports
+        public IEnumerable<ITimeReportDaily> DailyReports
         {
             get
             {
@@ -83,40 +77,5 @@ namespace TimeClock.Web.Models
 
             return Calculate(++outIndex, ++outIndex, totalMinutes);
         }
-
-        //private double CalculateTotalHoursWorked()
-        //{
-        //    double totalTime = 0;
-        //    var punchCount = _timePunches.Count();
-
-        //    if (punchCount == 0) return 0;
-        //    //skip first time if it is punched out. No punch in time to calulcate time worked with. 
-        //    if (_timePunches.First().Status == TimePunchStatus.PunchedOut)
-        //    {
-        //        _timePunches = _timePunches.Skip(1);
-        //    }
-
-
-        //    for (int i = 0; i < punchCount; i += 2)
-        //    {
-        //        var timeOne = _timePunches.ElementAt(i).Time;
-        //        DateTime timeTwo;
-        //        //We are not the last element, use the next clockout time as to calculate time worked.
-        //        if (i != punchCount - 1)
-        //        {
-        //            timeTwo = _timePunches.ElementAt(i + 1).Time;
-        //        }
-        //        else
-        //        {
-        //            timeTwo = DateTime.Now;
-        //        }
-        //        TimeSpan span = (timeTwo - timeOne);
-        //        totalTime += span.Minutes;
-        //    }
-
-        //    return Math.Round(totalTime / 60, 2);
-        //}
     }
-
-  
 }

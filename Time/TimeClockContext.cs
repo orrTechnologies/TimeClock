@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,8 +33,18 @@ namespace TimeClock.Data
         public TimeClockContext()
             : base("name=DefaultConnection")
         {
-
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Employee>().Property(p => p.FirstName).HasMaxLength(50);
+            modelBuilder.Entity<Employee>().Property(p => p.LastName).HasMaxLength(50);
+            modelBuilder.Entity<Employee>().HasKey(e => e.EmployeeId);
+
+
+            base.OnModelCreating(modelBuilder);
+        }
+
         public static TimeClockContext Create()
         {
             return new TimeClockContext();

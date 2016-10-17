@@ -8,9 +8,9 @@ using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
 using Moq;
+using Timeclock.Services;
 using TimeClock.Data;
 using TimeClock.Data.Models;
-using TimeClock.Web.Services;
 
 namespace WebApplication1.Tests
 {
@@ -32,8 +32,8 @@ namespace WebApplication1.Tests
 
                 var data = new List<Employee>()
                 {
-                    new Employee() {EmployeeId = 1, FirstName = "dylan", LastName = "orr", CurrentStatus = TimePunchStatus.PunchedIn},
-                    new Employee() {EmployeeId = 2, FirstName = "Tyler", LastName = "Mork", CurrentStatus = TimePunchStatus.PunchedOut}
+                    new Employee() {EmployeeId = 1, FirstName = "dylan", LastName = "orr", PunchStatus = TimePunchStatus.PunchedIn},
+                    new Employee() {EmployeeId = 2, FirstName = "Tyler", LastName = "Mork", PunchStatus = TimePunchStatus.PunchedOut}
                 }.AsQueryable();
 
 
@@ -57,7 +57,7 @@ namespace WebApplication1.Tests
                     EmployeeId = 1,
                     FirstName = "Dylan",
                     LastName = "Orr",
-                    CurrentStatus = status
+                    PunchStatus = status
                 };
                 return employee;
             }
@@ -102,7 +102,7 @@ namespace WebApplication1.Tests
                 IEmployeeService service = ServicesTestHelper.CreateService();
 
                 service.ChangeClockStatus(employee, TimePunchStatus.PunchedOut);
-                Assert.IsTrue(employee.CurrentStatus == TimePunchStatus.PunchedOut);
+                Assert.IsTrue(employee.PunchStatus == TimePunchStatus.PunchedOut);
             }
             [TestMethod]
             public void Sets_Employee_Last_Punch_Time_To_Last_Punch()
@@ -124,7 +124,7 @@ namespace WebApplication1.Tests
                 service.ChangeClockStatus(employee, TimePunchStatus.PunchedOut);
                 _context.Verify(m => m.SaveChanges(), Times.Once);
                 
-                Assert.IsTrue(employee.CurrentStatus == TimePunchStatus.PunchedOut);
+                Assert.IsTrue(employee.PunchStatus == TimePunchStatus.PunchedOut);
             }
         }
 
@@ -274,7 +274,7 @@ namespace WebApplication1.Tests
                 IEmployeeService service = ServicesTestHelper.CreateService();
 
                 List<Employee> employees = service.FindByStatus(TimePunchStatus.PunchedIn);
-                employees.ForEach(e => Assert.IsTrue(e.CurrentStatus == TimePunchStatus.PunchedIn));
+                employees.ForEach(e => Assert.IsTrue(e.PunchStatus == TimePunchStatus.PunchedIn));
             }
         }
 

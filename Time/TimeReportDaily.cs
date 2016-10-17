@@ -7,7 +7,7 @@ using TimeClock.Data.Models;
 
 namespace TimeClock.Data
 {
-    public class TimeReportDaily
+    public class TimeReportDaily : ITimeReportDaily
     {
         public DateTime Date { get; set; }
         public IEnumerable<TimePunch> TimePunches { get; set; }

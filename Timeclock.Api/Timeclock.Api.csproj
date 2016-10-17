@@ -453,6 +453,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\TimeClock.Core\Timeclock.Core\Timeclock.Core.csproj">
+      <Project>{f9b6b647-ede9-45ca-a48f-f08b31802f99}</Project>
+      <Name>Timeclock.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Timeclock.Services\Timeclock.Services.csproj">
       <Project>{c20c68ff-56b0-47bc-8bcd-50dd40628c92}</Project>
       <Name>Timeclock.Services</Name>

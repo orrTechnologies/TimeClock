@@ -9,7 +9,6 @@ using System.Web.Http.Results;
 using Timeclock.Api.Models;
 using Timeclock.Services;
 using TimeClock.Data.Models;
-using TimeClock.Web.Services;
 
 namespace Timeclock.Api.Controllers
 {
@@ -49,7 +48,7 @@ namespace Timeclock.Api.Controllers
                 LastName = employee.LastName,
                 EmployeeId = employee.EmployeeId,
                 LastPunchTime = employee.LastPunchTime,
-                CurrentStatus = employee.CurrentStatus,
+                CurrentStatus = employee.PunchStatus,
                 RequiresAuthentication = employee.HasPin()
             };
         }
@@ -136,6 +135,7 @@ namespace Timeclock.Api.Controllers
             }
             if (ModelState.IsValid)
             {
+                //TODO: Use auto mapper here to auto copy properties. 
                 employee.FirstName = editBindingModal.FirstName;
                 employee.LastName = editBindingModal.LastName;
 

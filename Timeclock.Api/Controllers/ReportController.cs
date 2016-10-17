@@ -7,8 +7,8 @@ using System.Web.Http;
 using System.Web.UI.WebControls;
 using Timeclock.Api.Models;
 using Timeclock.Services;
+using TimeClock.Data;
 using TimeClock.Data.Models;
-using TimeClock.Web.Models;
 
 namespace Timeclock.Api.Controllers
 {

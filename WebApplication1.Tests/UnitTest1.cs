@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TimeClock.Data;
 using TimeClock.Data.Models;
-using TimeClock.Web.Models;
 
 namespace WebApplication1.Tests
 {

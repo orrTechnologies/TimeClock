@@ -8,7 +8,6 @@ using Moq;
 using Timeclock.Services;
 using TimeClock.Data;
 using TimeClock.Data.Models;
-using TimeClock.Web.Services;
 
 namespace WebApplication1.Tests
 {
@@ -23,7 +22,7 @@ namespace WebApplication1.Tests
 
             var employee = new Employee()
             {
-                CurrentStatus = TimePunchStatus.PunchedIn,
+                PunchStatus = TimePunchStatus.PunchedIn,
                 EmployeeId = 1,
             };
 
@@ -112,9 +111,9 @@ namespace WebApplication1.Tests
 
                 List<TimePunchRequest> timePunchData = new List<TimePunchRequest>()
                 {
-                    new TimePunchRequest(5, TimePunchStatus.PunchedIn, new DateTime(2016, 1, 1)),
-                    new TimePunchRequest(5, TimePunchStatus.PunchedOut, new DateTime(2016, 1, 2)),
-                    new TimePunchRequest(5, TimePunchStatus.PunchedIn, new DateTime(2016, 1, 3))
+                    new TimePunchRequest(5, TimePunchStatus.PunchedIn),
+                    new TimePunchRequest(5, TimePunchStatus.PunchedOut),
+                    new TimePunchRequest(5, TimePunchStatus.PunchedIn)
                 };
 
                 var timeService = CreateService(timePunchData: timePunchData);
