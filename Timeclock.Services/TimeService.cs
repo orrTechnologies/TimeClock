@@ -24,7 +24,7 @@ namespace Timeclock.Services
 
         public List<TimePunch> GetPunchList(int employeeId, TimeClockSpan timeClockSpan)
         {
-            var punchList = _context.TimePunches.Where(t => t.EmployeeId == employeeId
+            var punchList = _context.TimePunches.Where(t => t.Employee.EmployeeId == employeeId
                 && t.Time >= timeClockSpan._start && t.Time <= timeClockSpan._end).ToList();
             return punchList;
         }

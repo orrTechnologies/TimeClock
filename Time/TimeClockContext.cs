@@ -40,17 +40,15 @@ namespace TimeClock.Data
             modelBuilder.Entity<Employee>().Property(p => p.FirstName).HasMaxLength(50);
             modelBuilder.Entity<Employee>().Property(p => p.LastName).HasMaxLength(50);
             modelBuilder.Entity<Employee>().HasKey(e => e.EmployeeId);
-            modelBuilder.Entity<Employee>().HasMany(e => e.TimePunches);
+
+            modelBuilder.Entity<Employee>()
+                .HasMany(e => e.TimePunches);
+
 
             base.OnModelCreating(modelBuilder);
         }
 
-        public static TimeClockContext Create()
-        {
-            return new TimeClockContext();
-        }
         public virtual DbSet<Employee> Employees { get; set; }
-
         public virtual DbSet<TimePunch> TimePunches { get; set; }
 
     }

@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timeclock.Services", "Timec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timeclock.Api", "Timeclock.Api\Timeclock.Api.csproj", "{1B5CCC0D-D4EF-49D4-B9A6-8C0C4B9B38C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timeclock.Core", "..\TimeClock.Core\Timeclock.Core\Timeclock.Core.csproj", "{F9B6B647-EDE9-45CA-A48F-F08B31802F99}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timeclock.Core", "TimeClock.Core\Timeclock.Core\Timeclock.Core.csproj", "{F9B6B647-EDE9-45CA-A48F-F08B31802F99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
