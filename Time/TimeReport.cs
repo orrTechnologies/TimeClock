@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Timeclock.Core;
+using Timeclock.Core.Domain;
 using TimeClock.Data.Models;
 
 namespace TimeClock.Data

@@ -8,6 +8,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
+using Timeclock.Core.Domain;
 using TimeClock.Data.Models;
 
 namespace TimeClock.Data
@@ -37,12 +38,12 @@ namespace TimeClock.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Employee>().Property(p => p.FirstName).HasMaxLength(50);
-            modelBuilder.Entity<Employee>().Property(p => p.LastName).HasMaxLength(50);
-            modelBuilder.Entity<Employee>().HasKey(e => e.EmployeeId);
+            //modelBuilder.Entity<Employee>().Property(p => p.FirstName).HasMaxLength(50);
+            //modelBuilder.Entity<Employee>().Property(p => p.LastName).HasMaxLength(50);
+            //modelBuilder.Entity<Employee>().HasKey(e => e.EmployeeId);
 
-            modelBuilder.Entity<Employee>()
-                .HasMany(e => e.TimePunches);
+            //modelBuilder.Entity<Employee>()
+            //    .HasMany(e => e.TimePunches);
 
 
             base.OnModelCreating(modelBuilder);

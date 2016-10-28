@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Timeclock.Core;
+using Timeclock.Core.Domain;
 using TimeClock.Data;
 using TimeClock.Data.Models;
 

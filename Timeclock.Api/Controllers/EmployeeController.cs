@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Results;
 using Timeclock.Api.Models;
+using Timeclock.Core;
+using Timeclock.Core.Domain;
 using Timeclock.Services;
 using TimeClock.Data.Models;
 
@@ -40,6 +42,8 @@ namespace Timeclock.Api.Controllers
             return MapEmployeeToBindingModel(employee);
         }
 
+
+        //TODO: Use auto mapper
         private EmployeeBindingModel MapEmployeeToBindingModel(Employee employee)
         {
             return new EmployeeBindingModel
@@ -102,7 +106,7 @@ namespace Timeclock.Api.Controllers
             {
                 _timeService.AddTimePunch(employee,
                     new TimePunch(timePunchBindingModel.Status, DateTime.Now));
-                return Ok(employee);
+                return Ok(MapEmployeeToBindingModel(employee));
             }
             return BadRequest();
         }

@@ -1,7 +1,8 @@
 using System.Collections.Generic;
-using TimeClock.Data.Models;
+using Timeclock.Core.Domain;
+using TimeClock.Data;
 
-namespace TimeClock.Data
+namespace Timeclock.Core
 {
     public interface ITimeReport
     {

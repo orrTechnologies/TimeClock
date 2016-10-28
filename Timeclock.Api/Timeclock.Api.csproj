@@ -239,10 +239,6 @@
     <Content Include="app\shared\statusMessage\statusMessage.html" />
     <Content Include="app\shared\statusMessage\statusMessage.Module.js" />
     <Content Include="app\shared\statusMessage\statusMessageDirective.js" />
-    <Content Include="App_Data\timeclock3.mdf" />
-    <Content Include="App_Data\timeclock3_log.ldf">
-      <DependentUpon>timeclock3.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\sbadmin\ng-table.css" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -445,6 +441,7 @@
     <Folder Include="app\components\admin\timeManager\" />
     <Folder Include="app\controllers\" />
     <Folder Include="app\directives\" />
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -453,7 +450,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TimeClock.Core\Timeclock.Core\Timeclock.Core.csproj">
+    <ProjectReference Include="..\TimeClock.Core\Timeclock.Core\Timeclock.Core.csproj">
       <Project>{f9b6b647-ede9-45ca-a48f-f08b31802f99}</Project>
       <Name>Timeclock.Core</Name>
     </ProjectReference>

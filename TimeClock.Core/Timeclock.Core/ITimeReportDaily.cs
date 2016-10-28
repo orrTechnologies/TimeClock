@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Timeclock.Core.Domain;
 using TimeClock.Data.Models;
 
 namespace TimeClock.Data

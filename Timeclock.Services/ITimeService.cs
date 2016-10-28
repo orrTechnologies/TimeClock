@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Timeclock.Core.Domain;
 using TimeClock.Data.Models;
 
 namespace Timeclock.Services

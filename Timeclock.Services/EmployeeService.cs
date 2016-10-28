@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Timeclock.Core;
+using Timeclock.Core.Domain;
 using TimeClock.Data;
 using TimeClock.Data.Models;
 

@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Data;
+using TimeClock.Data.Models;
 
-namespace TimeClock.Data.Models
+namespace Timeclock.Core.Domain
 {
     public class TimePunch
     {

@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using Timeclock.Core.Domain;
+using Timeclock.Services;
 using TimeClock.Data.Models;
 
-namespace Timeclock.Services
+namespace Timeclock.Core
 {
     public interface IEmployeeService
     {

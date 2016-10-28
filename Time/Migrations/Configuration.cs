@@ -1,6 +1,6 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using TimeClock.Data.Models;
+using Timeclock.Core.Domain;
 
 namespace TimeClock.Data.Migrations
 {
@@ -32,23 +32,23 @@ namespace TimeClock.Data.Migrations
                     });
                 }
             }
-            if (!context.Roles.Any(r => r.Name == "Admin"))
-            {
-                var store = new RoleStore<IdentityRole>(context);
-                var manager = new RoleManager<IdentityRole>(store);
-                var role = new IdentityRole { Name = "Admin" };
-                manager.Create(role);
-            }
+            //if (!context.Roles.Any(r => r.Name == "Admin"))
+            //{
+            //    var store = new RoleStore<IdentityRole>(context);
+            //    var manager = new RoleManager<IdentityRole>(store);
+            //    var role = new IdentityRole { Name = "Admin" };
+            //    manager.Create(role);
+            //}
 
-            if (!context.Users.Any(u => u.UserName == "Dylan"))
-            {
-                var store = new UserStore<ApplicationUser>(context);
-                var manager = new UserManager<ApplicationUser>(store);
-                var user = new ApplicationUser { UserName = "Dylan" };
+            //if (!context.Users.Any(u => u.UserName == "Dylan"))
+            //{
+            //    var store = new UserStore<ApplicationUser>(context);
+            //    var manager = new UserManager<ApplicationUser>(store);
+            //    var user = new ApplicationUser { UserName = "Dylan" };
 
-                manager.Create(user, "password");
-                manager.AddToRole(user.Id, "Admin");
-            }
+            //    manager.Create(user, "password");
+            //    manager.AddToRole(user.Id, "Admin");
+            //}
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

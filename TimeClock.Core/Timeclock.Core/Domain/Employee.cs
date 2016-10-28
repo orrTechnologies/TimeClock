@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using TimeClock.Data.Models;
 
 // ReSharper disable InconsistentNaming
 
-namespace TimeClock.Data.Models
+namespace Timeclock.Core.Domain
 {
     public class Employee
     {

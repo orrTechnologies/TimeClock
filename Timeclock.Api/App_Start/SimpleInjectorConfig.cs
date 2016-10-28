@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
+using Timeclock.Core;
 using Timeclock.Services;
 using TimeClock.Data;
 

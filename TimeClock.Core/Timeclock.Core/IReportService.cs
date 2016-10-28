@@ -1,4 +1,5 @@
-﻿using TimeClock.Data;
+﻿using Timeclock.Core;
+using TimeClock.Data;
 using TimeClock.Data.Models;
 
 namespace Timeclock.Services
